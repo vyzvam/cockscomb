@@ -1,0 +1,221 @@
+Docker Mastery (Udemy):
+☐ Download and install docker CE for windows (it might enable hyper v and restart) 
+☐ if hyper v is not enabled, 
+  ☐ Make sure hyper v is enabled (comes with windows (pro and enterprise))
+  ☐ Hardware assisted virtualization and data execution protection enabled in the BIOS
+  ☐ if not open powershell as admin and run dism.exe /Online /Enable-Feature:Microsoft-Hyper-V /All
+  ☐ restart system
+  ☐ make sure to use linux container
+☐ for tab completion, install from posh-docker (in PS)
+  ☐ Install-Module -Scope CurrentUser posh-docker
+  ☐ Import-Module posh-docker
+  ☐ For persistency create a profile
+    ☐ Test-path $PROFILE
+    ☐ New-Item $PROFILE -type file -force 
+    ☐ Add-Content $PROFILE "Import-Module posh-docker"
+☐ Container commands
+  ☐ Running a container : docker container run --publish 8080:80 nginx
+      ☐ downloads (if not available locally) nginx and runs the container
+      ☐ It publishes as a web server on routes the local port 8080 to the container nginx port 80
+  ☐ Running a container detached : docker container run --detach --publish 8080:80 nginx
+  ☐ lists running containers : docker container ls
+  ☐ lists all containers : docker container ls -a
+  ☐ specified container name : docker container run -d -p 8080:80 --name proxon nginx
+  ☐ show logs related container : docker container logs proxon
+  ☐ show running processes related to container: docker container top proxon 
+  ☐ stops the container : docker container stop <ID> 
+  ☐ removes the containers by specified ids: docker container rm [<id>,]
+☐ Sample usecase / workflow, run nginx, httpd & mysql with random password
+  ☐ docker container run -d -p 8080:80 --name proxon nginx
+  ☐ docker container run -d -p 8081:80 --name servon httpd
+  ☐ docker container run -d -p 8081:80 --name repon mysql -e MYSQL_RANDOM_ROOT_PASSWORD=yes
+  ☐ view logs for mysql process: docker container logs repon
+  ☐ inspect repon configs : docker container inspect repon
+  ☐ view processes in a container : docker container top repon
+  ☐ view live statistics of all or specific container : docker container stats repon
+☐ Getting shell inside of a container
+  ☐ run and enter container in bash: docker container run -it --name nginx nginx bash
+  ☐ exiting will stop the container: exit
+  ☐ run and enter container later: docker container run -it --name ubuntu ubuntu
+  ☐ start and access the shell again: docker contaner start -ai ubuntu
+☐ access into a running container
+  ☐ docker container exec -it mysql bash
+☐ Docker networks
+  ☐ list docker's network: docker network ls
+    ☐ bridge (default, used by docker to route packets with the host)
+    ☐ host, use host network directly. prevents security boundaries of the docker network. Improved performance
+  ☐ inspect a network: docker network inspect <NAME>
+  ☐ create a network: docker network create my_net
+  ☐ run a container on a network: docker container run -d --name webserver --network my_net
+  ☐ connect a container to a network: docker network connect my_net webserver
+    ☐ inspect: docker network inspect my_net
+    ☐ inspect: docker container webserver
+  ☐ disconnect a container to a network: docker network disconnect my_net webserver
+  ☐ Test workflow #1: Pinging
+    ☐ create 2 containers to the same network and see if they can communicate with each other
+    ☐ docker network create gusnet
+    ☐ docker container run -d --name ingus --network gusnet
+    ☐ docker container run -d --name dingus --network gusnet
+    ☐ docker network inspect gusnet (get the ip addressed of the container)
+    ☐ docker container exec -it ingus ping <dingus_ip> 
+    ☐ docker container exec -it dingus ping <iingus_ip> 
+  ☐ Test workflow #2: software version check
+    ☐ docker container run --rm -it --name centos centos:7 bash
+    ☐ in bash : yum install curl
+    ☐ in bash : curl --version
+    ☐ docker container run i-rm -it --name ubuntu ubuntu:14.04 bash
+    ☐ in bash : apt-get update && apt-get install curl
+    ☐ in bash : curl --version
+    ☐ exit both container and note that it is cleaned up (stopped and removed)
+  ☐ Test workflow #3: DNS round robin
+    ☐ Create network: docker network create searchnet
+    ☐ Run container #1: docker container run -d --net searchnet --net-alias es elasticsearch:2
+    ☐ Run container #2: docker container run -d --net searchnet --net-alias es elasticsearch:2
+    ☐ Check and lookup containers. Repeat curl call (results will be either one of the ES with domain es.searchnet) 
+      ☐ docker container ls (note the exposed port for both containers)
+      ☐ docker container run --rm --net searchnet alpine nslookup search
+      ☐ docker container run --rm --net searchnet centos curl -s search:9200
+☐ Images
+  ☐ Union file system : layerd file system changes
+  ☐ Tagging docker
+    ☐ tagging : docker image tag nginx vyzvam/nginx
+    ☐ tagging : docker image push nginx vyzvam/nginx
+    ☐ tagging : docker image tag vyzvam/nginx vyzvam/nginx:testing
+  ☐ Dockerfile
+    ☐ Rules
+      ☐ Specify from
+      ☐ chain commands so that it is in a single layer (adding repo, etc_)
+      ☐ run the logging to stdout and stderr since it will be handled by docker
+      ☐ specy ports to be exposed
+      ☐ final command "cmd" for what to do when the container is launched
+      ☐ the order of the instructions should be from the least changes to most changes, so that building dockerfile will be faster
+    ☐ building new : docker image build -t subanginx .
+    ☐ Building, extending from image 
+      ☐ specify image in FROM : will inherit stanzas from image (don't have to specify cmd at the end)
+      ☐ ENV is not inheritted from upstream image
+      ☐ copy files (when required)
+      ☐ build the image: docker image build -t subanginx .
+      ☐ push if required, docker image push subanginx:latest vyzvam/subanginx:latest
+    ☐ workflow #1
+      ☐ dockerize node.js app, build, test, push, rm and run, alpine of node 6.x image. expect result in localhost:8080
+      ☐ dockerfile:
+        ☐ Use the 'node' official image with alpine 6.x branch: FROM node:6.14.3-alpine
+        ☐ listens on port 3000: EXPOSES 3000
+        ☐ use alpine package manager to install tini & create directory /usr/src/app for app files 
+          ☐ RUN apk add --update tini && mkdir -p /usr/src/app
+        ☐ copy in package.json file: 
+          ☐ WORKDIR /usr/src/app
+          ☐ COPY package.json package.json
+        ☐ run 'npm install' to install dependencies AND keep it clean and small
+          ☐ RUN npm install && npm cache clean --force
+        ☐ copy in all files from current directory: COPY . /usr/src/app
+        ☐ start container with command '/sbin/tini -- node ./bin/www': CMD ["/sbin/tini", "--", "node", "./bin/www"]
+      ☐ Build the image: docker image build -t vyzvam-nodejs 
+      ☐ Test container: docker container run -d -p 8080:3000 vyzvam-nodejs
+      ☐ tag the image: docker image tag vyzvam-nodejs vyzvam-nodejs 
+      ☐ push the image: docker image push vyzvam/nodejs
+      ☐ remove local images: docker image rm vyzvam-nodejs && docker image rm vyzvam/nodejs
+      ☐ Run the container from docker hub: docker container run -d -p 8080:3000 vyzvam/nodejs 
+      ☐ 
+☐ Volumes
+  ☐ Data Volumes
+    ☐ specified in dockerfile: VOLUME /var/lib/mysql 
+    ☐ Volumes key in image: docker image inspect mysql
+    ☐ Volumes and Mounts Keys (Source is the path in the host)
+      ☐ docker container run -d --RM --name mysql mysql -e MYSQL_RANDOM_ROOT_PASSWORD=yes
+      ☐ docker container inspect mysql: 
+      ☐ docker volume ls and docker volume <volume name>: mountpoint is where the data path is
+    ☐ host path (volume) outlives the container, ensuring data persistence, but the name and path is not friendly
+  ☐ Named Volumes
+      ☐ run with a names volume mysql-db: docker container run -d -e MYSQL_RANDOM_ROOT_PASSWORD=yes -v mysql-db:/var/lib/mysql mysql 
+      ☐ create volume beforehand to be used later: docker volume create mysql-db
+  ☐ Bind mounting
+    ☐ maps host file/directory to container file/directory (2 locations pointing to the same files)
+    ☐ host file overwrite container, must use in container run (not used in Dockerfile)
+    ☐ docker container run --rm -d -p 8080:80 -v //c/dcr-share:/usr/share/inginx/html nginx
+    ☐ WARNING: THIS SEEMS TO NOT WORK AS THE VOLUMES DID NOT BIND
+  ☐ Workflow #1: named mounts:
+    ☐ run a postgres container with name volume ""
+    ☐ first run version 9.6.1 then 9.6.2
+    ☐ docker container run -d --name psql -v psql:/var/lib/postgresql/data postgres:9.6.1
+    ☐ docker container log -f psql
+    ☐ docker container stop psql 
+    ☐ docker container run -d --name psql2 -v psql:/var/lib/postgresql/data postgres:9.6.2
+    ☐ docker container log -f psql2
+    ☐ docker volume ls
+  ☐ Workflow #2: Bind mounts (CURRENTLY NOT TESTED)
+    ☐ docker container run -p 8080:4000 -v $(pwd):/site bretfisher/jekyll-serve
+    ☐ Observe the log 
+    ☐ run the localhost:8080
+    ☐ edit the title in file in _posts
+    ☐ reload the site and see the changes
+☐ Compose
+  ☐ Example #1: run nginx (r proxy) and httpd (web server), docker-compose.yml must be valid
+    ☐ docker compose up - runs on the same shell with logs. Note:ctrl + c to stop
+    ☐ docker compose up -d : runs on background
+    ☐ view on browser
+    ☐ docker compose logs : view logs
+    ☐ docker compose ps : list containers
+    ☐ docker compose top : show running processes
+    ☐ docker compose down: bring down the services
+  ☐ Workflow #1: Drupal site
+    ☐ Use Drupal (post 8080) and Postgres (set POSTGRES_PASSWORD). Setup drupal in browser (specify the servicename for db host) use volume for drupal data
+      ☐ docker-compose.yml
+        version: '2'
+        services:
+          drupal:
+            image: drupal:latest
+            ports:
+              - '8080:80'
+            volumes:
+              - drupal-modules:/var/www/html/modules
+              - drupal-profiles:/var/www/html/profiles
+              - drupal-sites:/var/www/html/sites
+              - drupal-themes:/var/www/html/themes
+          postgres:
+            image: postgres:latest
+            environment:
+              - POSTGRES_PASSWORD=password
+        volumes:
+          drupal-modules:
+          drupal-profiles:
+          drupal-sites:
+          drupal-themes:
+      ☐ docker-compose up 
+      ☐ run localhost:8080 on browser and setup drupal
+      ☐ docker-compose down -v : this will remove the volumes
+  ☐ Example #2: Run a apache site with a custom nginx proxy and set the volume to the site resource files
+    ☐ run "proxy" with a build of nginx 1.13 and copy over the nginx.conf on port 8080:80
+    ☐ run "web" based on 'httpd' image and set the volume to the html path to default root path
+    ☐ 'up' the compose then open site "localhost:8080"
+    ☐ edit the index.html and note the changes on the site
+    ☐ 'down' the compose
+    ☐ if custom image name is not specified then during 'down' the image will be removed
+    ☐ or can use --rmi <type:[local/all]> to remove the specified custom image
+  ☐ Workflow #2: run drupal with bootstrap theme 
+    ☐ Dockerfile: 
+      ☐ latest drupal
+      ☐ , install git, 
+      ☐ install bootstrap themes and apply bootstrap folder ownership
+      ☐ set workdir to html
+    ☐ docker-compose.yml: 
+      ☐ service1:drupal, custom drupal from the Dockerfile,  port 8080:80, set volumes for modules, profiles, sites & themes
+      ☐ service1:postgres, 9.6 set env password, port 8080:80, set volumes for data
+      ☐ set local volumes for both drupal and postgres 
+    ☐ run compose
+    ☐ setup the drupal site
+    ☐ install the bootstrap them and set as default
+    ☐ make sure the theme is applied
+    ☐ compose down then up again to check if theme is still applied
+☐ Swarm mode: Built-in Orchestration
+  ☐ 
+
+
+
+
+
+
+
+
+
+

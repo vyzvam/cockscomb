@@ -1,0 +1,421 @@
+Engineering Software as a Service, Part 1:
+ ☐ Week -1 & 0
+   ☐ Settings things up
+     ☐ register at c9
+     ☐ setup a virtual box : https://github.com/saasbook/courseware/wiki/Setting-up-using-VirtualBox
+     ☐ setup environment, ubuntu, 1024 MB
+     ☐ Learnt GIT, Ruby & shell command
+ ☐ Week 1: Intro to SW Engineering
+   ☐ What is SaaS
+     ☐ delivers SW & dat as a service over internet via thin program running on client device
+   ☐ SOA (Service oriented architecture)
+     ☐ all componnents or application or services communicates internaly or externaly through API
+   ☐ Cloud Computing
+   ☐ Beautiful code vs. legacy code
+   ☐ Software quality assurance
+     ☐ Unit test - single method does what it was intended
+     ☐ Module / functional test - across individual units
+     ☐ integration test - interfaces between units have consistent assumptions, communciates correctly
+     ☐ system or acceptance test - integrated program meets its specifications
+     ☐ black box (based on specs) vs. white box (implementation)
+     ☐ test coverage is % of code paths tested
+     ☐ regression testing: automatically rerun old tests so changes don't brteak what used to work.
+     ☐ Continuous integration (CI) testing: continuous regression testing on each code check-in vs. later testing phase
+   ☐ Productivity conciseness, synthesis, reuse, and tools
+     ☐ concise
+       ☐ shorter and easier to read syntax
+       ☐ raise the level of abstraction (helper methods)
+         ☐ HLL (high level language) programmming language
+         ☐ auto memory management
+         ☐ scripting languages, reflection, metaprogramming
+     ☐ Synthesis
+       ☐ BitBit: generate code to fit situation and remove conditional test
+       ☐ research stage: programming by example
+     ☐ Code reuse
+       ☐ procedues and fuctions
+       ☐ standardidsed libraries
+       ☐ OOP
+       ☐ design patterns
+     ☐ Tools
+       ☐ replacing manual tasks with automation , save time, impove accuracy
+     ☐ DRY, don't repeat yourself
+ ☐ Week 1: Agile and Ruby Intro
+   ☐ SW development process, agile
+     ☐ Individuals and interactions
+     ☐ Working software
+     ☐ Customer collboration
+     ☐ Responding to change
+     ☐ short iterations
+     ☐ simplest thing that could possible work
+     ☐ write test code before code
+     ☐ code reviews are good
+   ☐ Size & Scrum
+     ☐ Scrum
+       ☐ 15 minutes each day
+       ☐ answer 3 questions, what was done since yesterday? what's today's plan? are there impediments or stumbling blocks
+   ☐ Pair programming
+     ☐ improve quality, reduce completion time
+     ☐ Roles
+       ☐ Driver - codes and thinks tactically on how to complete task, explain toughts while typing
+       ☐ Observer 
+         ☐ reviews each line of code as type, safety net for the driver
+         ☐ thinks about future problems, suggests
+       ☐ There should be lots of talking and concentration
+       ☐ Pair with alternate roles
+     ☐ Do's & Don'ts
+       ☐ no fiddling with smartphone
+       ☐ consider pairing with someone at different experience level
+       ☐ swap frequently
+ ☐ Week 2: More Ruby
+   ☐ All programming is meta-programming
+     ☐ introspection - ask Ruby objects about themselves at runtime 
+     ☐ Reflection - generate new code (methods, objects, class) at runtime
+     ☐ define new code at run time
+     ☐ allowing extending and opening existing classes to add funtions
+     ☐ DRY way of doing it if more function is required. 
+     ☐ method_missing is used and a array of declared to handle the many options
+     ☐ class method is referenced as . and instance method is refernced as #
+   ☐ Blocks, Iterators, functional idioms
+     ☐ functional programming, where loops are done using blocks / anonymously
+   ☐ Mixins & Duck typing
+     ☐ Module, a group of methods that does not belong to a class
+     ☐ which can be inherited by a class
+   ☐ Yield
+   ☐ Ruby pro tips from Rails core committer Aaron Patterson
+     ☐ WHERE IS THAT METHOD?
+       ☐ how to know where a method is defined. The method method will return a method object and let you call source_location to find the method location. For example: p object.method(:unknown_method).source_location. If object has the instance method unknown_method, this code will print the location of that method.
+
+     ☐ WHO IS CALLING ME?
+       ☐ How can I find out who called this method. The caller method will give you the current stack trace, so you can do p caller and see who is calling you. Alternatively, just raise an exception, and you'll see the backtrace.
+
+     ☐ WHAT IS MY CLASS?
+       ☐ I'm editing a method, but I'm not sure what . How can I find out what class a method is defined on. Use the class method. For example:
+        def foo
+          p self.class
+        end
+        This will print out the class of self which is your current instance.
+
+     ☐ WHAT IS MY SUPERCLASS?
+       ☐ I want to know where the superclass method is defined. How do I find it? Use the superclass method on the class to get the superclass. For example: p self.class.superclass.instance_method(:foo).source_location
+
+     ☐ One caveat is that the method may not be defined on your superclass, but somewhere further up the inheritance chain. You can find that by using ancestors. For example
+      def foo
+        # ...
+        self.class.ancestors.each do |klass|
+          next unless klass.method_defined?(:foo)
+          p klass.instance_method(:foo).source_location
+        end
+        super
+        # ...
+      end
+     ☐ I personally don't use a debugger, but I've heard the debugger gem is good.
+ ☐ Week 2: Intro to BDD, TDD and SaaS
+   ☐ BDD + TDD Overview
+     ☐ Using RSpec and Unit testing
+     ☐ Write tests before creating codes 
+     ☐ BDD
+       ☐ develop features that would describe how th app would work
+       ☐ via Cucumber , these come acceptance tests and integration test
+     ☐ TDD
+       ☐ step definitions for features
+       ☐ writing the unit & functional test for the code frist before code itself.
+   ☐ FIRST
+     ☐ Fast
+       ☐ subset of tests run really quick
+     ☐ Independent
+       ☐ does not depents on other modules / or tests
+     ☐ Repeatable
+       ☐ the results is consistent / exceptable range
+     ☐ Self-checking
+       ☐ no interventation from coders / users
+     ☐ Timely
+     ☐ written closely before the actual code is written
+   ☐ RSpec, a Domain-Specific Language for testing
+     ☐ DSL: small programming language that simplifies one task at expense of generality
+     ☐ RSpec tests are called specs or examples (red = failing, green = passing, yellow = pending)
+     ☐ Auto testing: autotest
+       ☐ will auto run the test which are currently changed
+       ☐ will auto run tests when the app code is changed
+   ☐ Web as a client-server system; TCP/IP intro
+     ☐ Web client and the server is a client server relationship
+     ☐ IP address (4 octects)
+     ☐ A full duplex communication (request and response)
+     ☐ the browser talks to the DNS Server (resolves domain name) the connects to the server with the IP mapped to that domain
+     ☐ HTTP protocols is ASCII based
+       ☐ Status codes (2xx - all is well, 3xx - resource moved, 4xx - access problem, 5xx - server error)
+     ☐ in linux, can use nc -l 8000 (netcast listening to request on port 8000), then can respond
+     ☐ cookies are used to remember user as they browse
+   ☐ HTML + CSS
+   ☐ 3-tier shared-nothing architecture & scaling
+     ☐ Presentation Tier: Web-Server (Apache, IIS)
+     ☐ Logic Tier: App server (the application)
+     ☐ Persistence Tier : Database (Postgres, MSSQL)
+     ☐ Scalling database problem 
+       ☐ Sharding different set of data in different db, thus becomes a problem if requires combining
+       ☐ Replication, same copy of data in different db, but one used for updates  and others for read, problem or change propagation
+   ☐ Homework
+     ☐ 
+ ☐ Week 3 - SaaS Architecture and REST
+   ☐ MVC
+     ☐  In SaaS apps on the Web, controller actions and view contents are transmitted using HTTP.  
+     ☐ Not All MVC apps have both a "client" part (e.g. Web browser) and a "cloud" part (e.g. Rails app on cloud). 
+     ☐ Model-View-Controller is just one of several possible ways to structure a SaaS app.  
+     ☐ Peer-to-peer apps (vs. client-server apps) can be structured as Model-View-Controller.
+   ☐ Models, Databases, Active record
+     ☐  The CRUD actions does not only apply to models backed by a database that supports ActiveRecord. 
+     ☐ Part of the Model's job is to convert between in-memory and stored representations of objects.  
+     ☐ Although model data is displayed by the View, a Model's direct interaction is with Controllers.  
+     ☐ Although DataMapper doesn't use relational databases, it's a valid way to implement a Model.
+   ☐ Controllers, Routers & RESTfulness
+     ☐  A resource may be existing content or a request to modify something.  
+     ☐ In an MVC app, every route must eventually trigger a controller action.  
+     ☐ One common set of RESTful actions is the CRUD actions on models.  
+     ☐ The route may and not always contain one or more 'wildcard' parameters such as :id to identify the particular resource instance used in the operation
+   ☐ Template views & Haml
+     ☐ ERB (embedded ruby)
+     ☐ better to use haml over erb?
+     ☐ A view accessing a model directly will work, but it's bad form and violates MVC guidelines.
+     ☐ It will work when developing against a 'toy' database, and in production. 
+   ☐ Summary & reflections: SAAS Architecture
+     ☐ Shared-nothing clusters scale better than systems built from mainframes
+       ☐ Relational databases do not scale better than "No-SQL" databases.
+       ☐ The programming language used (Ruby, Java, etc) isn't a main factor in scalability.  
+       ☐ Scalability can be impeded by any part of the app that becomes a bottleneck
+   ☐ Hello Rails: from ZERO to CRUD
+     ☐ Convention over configuration
+     ☐ DRY
+     ☐ Introspection and metaprogramming
+     ☐ Blocks (closure)
+     ☐ Modules (mix-ins)
+   ☐ Database & Migration
+     ☐ It is a versioning control for database schema
+     ☐ Development, production and test environment has their own databases
+     ☐ migratin is a script describing the changes to be made
+     ☐ rails generate migration table_name
+     ☐ rake db:migrate
+     ☐ heroku rake db:migrate
+     ☐ activeRecord you can, save, where, find, update_attributes, destroy
+     ☐ conventions: model name to db table name and getters / setters to db table columns
+     ☐ method names based on field name will be handled by method missing
+     ☐ Fallacies, pitfalls & perspectives
+       ☐ Keep controller clean, if certain jobs to be done in the model, then they shoud
+   ☐ Other Rail and Test stuff
+     ☐ WHAT ARE THE PARTS OF RAILS?
+       ☐ actionmailer directory contains the ActionMailer library which is in charge of sending out emails. 
+       ☐ actionpack directory contains the ActionPack library which is in charge of routing requests to the correct controller. It also contains the request and response class, as well as the controller base class that applications subclass.
+       ☐ actionview directory contains the ActionView library. it is in charge of templating. It contains logic for assembling HTML responses from templates.
+       ☐ activerecord directory contains the ActiveRecord library. it is the ORM that ships with Rails and in charge of interfacing with the database, defining the schema inside Rails, etc. When you need to deal with data persistence, this is where you look.
+       ☐ activemodel directory contains the ActiveModel library. it is just an interface. ActiveRecord implements that interface.
+       ☐ activesupport directory contains the ActiveSupport library. It extends the Ruby language with things that make developing web applications easier. If you see a method that is non-standard Ruby, it is probably defined in ActiveSupport.
+       ☐ railties directory contains "Railties". These are in charge of tying together an application. It processes configuration, rake tasks, and managing startup of the application.
+
+     ☐ HOW DO I RUN TESTS?
+       ☐ To run all tests (rake test). If you need to focus on ActionPack, just cd to the actionpack directory and run rake test. This is true for each component besides ActiveRecord.
+       ☐ By running rake test (all AR), will run the tests for each database. If you want to run just the SQlite3 tests, do rake test_sqlite. If you want to run the mysql tests, do rake test_mysql
+
+       ☐ There are two ways to run just one file. One with just plain ruby like this
+         ☐ ruby -I lib:test test/path/to/testfile.rb
+         ☐ rake test TEST=/test/path/to/testfile.rb
+       ☐ To run just one file, Provide the -n flag along with the method name, like this
+         ☐ ruby -I lib:test test/path/to/testfile.rb -n test_sometest
+         ☐ rake test TEST='/test/path/to/testfile.rb -n test_sometest'
+ ☐ Week 4
+   ☐ Agile Methodology: working with the customer
+     ☐ Identifying whats wrong: Smells, Metrics, SOFA
+       ☐ Qualitative: Code smells
+       ☐ Is is Short (S)
+       ☐ Does it do one thig (O)
+       ☐ Does it have few arguments (F)
+         ☐ Hard to get good testing coverage
+         ☐ hard to mock/stub while testing
+         ☐ Boolean arguments, chances are two methods within called based on the boolean value
+         ☐ Arguments travel in a pack, need to extract a new class, same set of args for a lot of methods
+       ☐ Is it a consistent level of Abstraction (A)
+       ☐ Rails tool 'reek' find code smells
+       ☐ Rails tool 'flog' checks ABC complexity
+       ☐ Rails tool 'saikuro' calculates cyclomatic complexity
+       ☐ add require 'metric_fu' to Rakefile, rake metrics:all
+     ☐ Intro to behaviour-driven design (BDD) and user stories
+       ☐ Problems
+         ☐ Doesn't do what customer wants
+         ☐ late projects
+         ☐ over budget
+         ☐ hard to maintain or evolve
+         ☐ all of the above
+       ☐ How agile try to avoid failure
+         ☐ Work closely, continuously with stakeholdersto develop requirements, tests
+         ☐ Maintain working prototype while deploying new feature every iteration
+         ☐ Check with stakeholders on what's next, to validate building right thing (vs. verify)
+       ☐ What is BDD
+         ☐ Asks questions about behaviour of app before and during dev to reduce miscommunication (validation vs. verification)
+         ☐ Requirements are written down as user stories (lightweight description of how app used)
+         ☐ Focuses on behaviour of app vs. implementation of app, Test Driven-Design (TDD) tests implementation
+       ☐ User Stories
+         ☐ 1 to 3 sentences in everyday language (fits 3x5 index card), written by /with customer
+         ☐ Connextra format
+           ☐ Feature name
+           ☐ As a [kind of stakeholder]
+           ☐ I want to [do some task]
+         ☐ user story can be formulated as acceptance test before code is written
+         ☐ why 3x5 index cards
+           ☐ They are non-threatening
+           ☐ Easy to rearange
+           ☐ Short stories, easy to change during dev
+         ☐ Different stakeholders may describe behaviour differently
+         ☐ Product backlog
+           ☐ have 100s of user stories
+           ☐ Not yet completed
+           ☐ prioritize most valuable item highest
+           ☐ organize to match SW release over time
+         ☐ Spike
+           ☐ short investigation into technique or problem
+           ☐ After spike done , code thrown away
+     ☐ Points, validity & pivotal tracker
+       ☐ measuring productivity
+         ☐ rate user stories in advance based on simple integer scale (1 to 3)
+         ☐ velocity - average number of points a team completes per week
+         ☐ Fibonnaci scale is commonly used: 1,2,3,5,8
+         ☐ Teams assign value: votes by holding up fingers simultaneously, take average. if big disagreement , discuss further
+         ☐ if more than 5 , divide into smaller stories
+         ☐ A tool called pivotal tracker   
+         ☐ Epic, combine related user stories together
+         ☐ ordered independant of user story in backlog
+         ☐ developes don't decide when user stories completed, pushes to product owner
+         ☐ product owner then either approves or rejects
+         ☐ Features vs. Chores
+           ☐ features are, user stories which are that provides verifiable business value. they are worth points and must be estimated
+           ☐ Chores are , user stories that are necessary but with no direct obvious value to customer, has no points
+     ☐ Smart User stories
+       ☐ Specific  
+         ☐ Each scenario is testable
+         ☐ Anti-Example: the UI should be user friendly
+         ☐ Example: Given/When/Then
+       ☐ Measurable
+         ☐ (refer to specific's items)
+       ☐ Achievable
+         ☐ Complete in 1 iteration
+       ☐ Relevant (the 5 Why's)
+         ☐ Protect revenue
+         ☐ Increase revenue
+         ☐ Manage cost
+         ☐ Increase brand value
+         ☐ making the product remarkable
+         ☐ more value to customers
+       ☐ Timeboxed
+         ☐ stop story when exceed time budget
+           ☐ give up or divide into smaller stories
+         ☐ Avoid underestimating length of project
+     ☐ Lo-Fi UI sketches & storyboards
+       ☐ Low fidelity user interfaces
+       ☐ Story boards
+         ☐ relationship of the lofiui's
+     ☐ Agile cost estimation
+       ☐ Don't promise to deliver resources and a predefined timeframe
+       ☐ Commit resources to work in the most efficient way possible up to date
+       ☐ Still need estimate for project
+         ☐ explain to customer how it works, joint effort , customer time commitment
+         ☐ customer visits for a scoping session , 1 1/2 hours
+         ☐ engineers spend 1/2 hour to estimate weeks e.g little vs. large uncertainty: 20-22 vs. 18-26 weeks
+         ☐ bid cost as time and material to customer
+     ☐ Explicit vs. Implicit & imperative vs. declarative scenarios
+       ☐ explicit
+         ☐ comes directly from the user (acceptance test)
+         ☐ implicit - logical consequences from the explicit requirements
+         ☐ requirements starts of imperatively and becomes declaritively
+     ☐ plan and document perspective
+       ☐ 
+     ☐ Fallacies & pitfalls, BDD pros & cons
+       ☐ customer confuse with digital mock-up with complete featues
+       ☐ sketches without the storyboard
+       ☐ adding cool features that do not make the product more successful (customer reject what programmer liked)
+       ☐ tryying to predict what code you need before need it
+       ☐ user stories help prioritize & BDD minimizes what you code
+   ☐ Week 4 TDD with RSpec
+     ☐ RSpec on Rails
+       ☐ rails generate rspec:install creates the directory structure
+       ☐ spec and lib will need to follow same structure for modesl views and controllers except the rb file has "_spec"
+       ☐ Unit tests (Model and helpers)
+       ☐ Functional tests (controllers)
+       ☐ intergration tests (views??), we are using cucumber
+     ☐ The TDD Cycle Red-Green-Refactor: Test-First Development
+       ☐ One thing that the code should do
+       ☐ Capture that and let it fail
+       ☐ write a simplest possible code that lets the test pass
+       ☐ refactor: DRY out commonality
+       ☐ Continue with next thing code should do
+       ☐ Red - Green - Refactor
+       ☐ "Always have working code"
+       ☐ Scenario: test a controller
+       ☐ if a controller suppose to call a a model class method that does not exist yet
+       ☐ specify what should be received and what method to call
+       ☐ This is possible because, 
+         ☐ it provides a stand in for the method that doesn't exists yet
+         ☐ it would override the existing method , even if it did exist
+         ☐ exploits Ruby's open classes and metaprogramming to create a seam
+     ☐ Seams
+       ☐ Place where app's behaviour can be changed without changing the source code
+       ☐ isolates behaviour of some code from that of other code it depends on
+       ☐ should_receive uses Ruby's open classes to create a seam for isolating controller action from behaviour
+       ☐ RSpec resets all mokcs & stubs after each example
+       ☐ After writing the actual method, we Keep the should_receive seam in the spec, but if necessary, change the spec to match the API of the real find_in_tmdb
+     ☐ Expectations
+       ☐ the steps that the code you wish to have
+       ☐ Should & Should-not, matcher applies test to receiver
+         ☐ should method will match with the operator applied , 
+         ☐ 'be_' prepended method can be exploited (method missing) to match the receiver
+     ☐ Mocks, Stubs & Test setup
+       ☐ Mocks a fake object of a certain class
+       ☐ Stub similar to should_be but no expectation & and_return optionally controls return value
+       ☐ RSpec cookery #1
+         ☐ each specs should test 1 behaviour
+         ☐ use seams to isolate that behaviour
+         ☐ determine what type of expectation will check that behaviour
+         ☐ write a failing test
+         ☐ code till the test is green
+         ☐ refactor / beautify
+     ☐ Fixtures & Factories
+       ☐ Fixtures, statically preloads some known data into database tables
+         ☐ database wiped & reloaded before each spec
+         ☐ truly static data having config info that never changes
+         ☐ not to use when may introduce dependancy on fixture data
+         ☐ easy to see all test data in one place
+       ☐ Factory: create only what you need per-test
+         ☐ setup helpers to quickly create objectes with defaults attributes as needed per-test
+         ☐ keep tests independant, unaffected by presence of objects they don't care about
+         ☐ not to use when complex relationships may be hard to set up (indicate too-tight coupling in code)
+       ☐ Pitfall: mock trainwreck
+         ☐ goal: search for movie by its director or by awards it received
+         ☐ the objects handled seperatly 
+       ☐ what kind of data should not be set up in fixtures
+         ☐ anything that have data dependancies / multiple relationships
+         ☐ only a single test is possible instead of multiple test scenarios
+     ☐ TDD for the Model and Stubbing the internet
+       ☐ Explicit vs. Implicit requirement
+         ☐ using "describe" and "context" keyword in RSpec
+         ☐ this is done when handling multiple test scenarios (2 stubbing approach)
+     ☐ Coverage
+       ☐ Unit vs. Integration tests
+         ☐ How much testing is enough?
+           ☐ until time to ship is bad
+           ☐ lines of test : lines of code : 1.2 : 1.5, is not bad
+           ☐ how thorough is my testing
+             ☐ formal methods
+             ☐ coverage measurement             
+         ☐ Coverage measurement example, a class with a method that calls another method of the instance
+           ☐ SimplCov gem (used to measure coverage)
+           ☐ Use coverage to identify untested  / undertested parts of code (don't test till 100%, refactor as the need arises)
+           ☐ balance the unit and integration tests (both finds bugs the other misses)
+           ☐    
+       ☐ Other testing concepts & testing vs. debugging
+         ☐ Mutation testing : if introduce deliberate error in code, does some test break?
+         ☐ Fuzz testing: 10,000 monkeys throw random input at your code (repeatedly sending different variant of input data)
+         ☐ DU coverrage: is pair Define (x) , use(x)
+         ☐ black box vs. white box testing: 
+       ☐ TDD Summary 
+         ☐ Red, Green & Refactor
+         ☐ test one behaviour ata time
+         ☐ use it placeholders or pending
+         ☐ read & understand coverate reports
+         ☐ don't rely too much on any one kind of test 
+     ☐ The plan and document perspective on testing
+       ☐ 

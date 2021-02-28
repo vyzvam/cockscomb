@@ -1,0 +1,23 @@
+UML Stuff:
+ ☐ Story:
+   ☐ Narrative through a process that has a valuable outcome
+   ☐ Exists within a context (System metaphor)
+   ☐ System architecture that is designed based on a real life components (eg. a blogging solution can use magazines as methapor)
+   ☐ A story can be an epic (have multiple stories)
+   ☐ Story content template : As a {x}, i need {y} so that {z} : x = role, y = activity, z = outcome
+   ☐ Story diagram = Use case diagram
+     ☐ Role / Actor - stickfigure
+     ☐ Story - Oval shape
+     ☐ Dependancy line (---->)
+     ☐ Requires line
+     ☐ Extends line
+     ☐ Epic - oval with trident symbol
+   ☐ Activity diagram
+     ☐ start = black filled circle
+     ☐ end = black filled circle with border
+     ☐ Activity - oval
+     ☐ boundry for concurrent dependant or non dependant processes - Hard top line and bottom line
+     ☐ activity (has external element) - direct flag / inverted flag
+     ☐ diamond - alternate paths (switch) / joining path
+     ☐ guard (true / false) text within brackets
+   ☐ Collaboration diagram

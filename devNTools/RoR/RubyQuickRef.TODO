@@ -1,0 +1,90 @@
+Ruby Stack Cheat Sheet:
+ ☐ Code related
+   ☐ Operators
+     ☐ Addition (+)
+     ☐ Subtraction (-)
+     ☐ Multiplication (*)
+     ☐ Division (/)
+     ☐ Exponentiation (**)
+     ☐ Modulo (%)
+   ☐ prints, prints to output whereas puts, prints to output with nextline
+   ☐ use #{object_name} within a string to embed objects or commands
+   ☐ !, used after a method that will apply changes to the calling object
+   ☐ ?
+   ☐ Commenting
+     ☐ # single line comments
+     ☐ =begin and =end used for multiline comments
+   ☐ gsub method (global substitution) matches with regular expressin and replace with a string
+   ☐ Looping & Iterating
+     ☐ while counter < 11 # Do something end
+     ☐ until counter > 10 # Do something end
+     ☐ for num in 1...10 # Do something end - up to the last value
+     ☐ for num in 1..15 # Do something end - up to less than last value
+     ☐ loop do # Do something end
+     ☐ next if i % 2 == 0 - skip if condition met (inside a loop)
+     ☐ object.each { |item| # Do something } or object.each { |key, value| # Do something } or s.each { |x| sub_array = x sub_array.each {|y| puts "#{y}" }}
+     ☐ 10.times { print "Chunky bacon!" }
+     ☐ while i > 0 do # Do something end
+     ☐ until j == 0 do # Do something end
+     ☐ for k in 1..3 print k end
+   ☐ Data Types
+     ☐ arrays
+       ☐ d_array = [[1,2,3,4],[5,6,7,8],[0,0,0,0],[0,0,0,0]]
+       ☐ multi_d_array = [0,0,0,0]
+       ☐ hash: my_hash = { "name" => "Suba", "age" => 36, "hungry?" => true }
+       ☐ 
+   ☐ ||= , conditional assignment, it only assigns if the assignee is nil
+   ☐ a function does not require the return keyword, it simply returns the last variable / statement
+   ☐ << operator is an assignment or concatenation, works also with array (replaces + and any add functions)
+   ☐ Blocks, procs and lambdas
+     ☐ Blocks (they are not objects)
+       ☐ <array>.collect return an modified array and assigns it to a variable, if any. we can apply ! to apply to the operating array
+       ☐ yield = takes the block from the function call and executes it.
+         def double(num)
+          num *= 2
+          yield(num)
+         end
+
+         double(3) { |num| puts "The number is #{num}" }
+     ☐ Procs (saved blocks), they are objects
+       ☐ assign to a variable using Proc.new in place of the function name
+       ☐ call it using the & keyword
+       ☐ Example #1
+        group_1 = [4.1, 5.5, 3.2, 3.3, 6.1, 3.9, 4.7]
+        over_4_feet = Proc.new { |height| height >= 4 }
+        can_ride_1 = group_1.select(&over_4_feet)      
+       ☐ example #2
+        def greeter
+            yield
+        end
+
+        phrase = Proc.new { puts "Hello there!" }
+
+        greeter(&phrase)
+        phrase.call       
+      ☐ Symbols with proc, strings_array = numbers_array.map(&:to_s)
+    ☐ Lambda, they are also objects
+      ☐ similar syntax to Proc (replace Proc.new with lambda)
+      ☐ example
+        odds_n_ends = [:weezard, 42, "Trady Blix", 3, true, 19, 12.345]
+        int_checker = lambda {|item| item.is_a? Integer}
+        ints = odds_n_ends.select(&int_checker)
+    ☐ OOP 
+      ☐ use the class keyword and name of class is pascal case
+      ☐ initialize keyword is constructor
+      ☐ '@' before a variable indicates a instance variable
+      ☐ '$' a varaible declared within a class but can be called anywhere (without the instance of the class)
+      ☐ '@@' a class variable
+      ☐ '<' inheritance symbol
+      ☐ 'super' , use this keyword in a subclass method that will call the function of the superclass (with the same method name)
+      ☐ <classname>.methodName is used to specify that it's a class method
+      ☐ 
+    ☐ Module (similar to static classes in c#)
+      ☐ constants are all caps with underbar
+      ☐ :: is a scope resolution operator
+      ☐ use require statement to use the required modules or classes
+      ☐ use include statement to include modules or classes 
+    ☐ Mixin , using modules together with classes
+      ☐ Modules can be included in classes and the module methods can be called from the class instance (as if it is it's own instance method) 
+      ☐ Modules can be extended in classes and the module methods can be called from the class  (as if it is it's class method) 
+      ☐ 

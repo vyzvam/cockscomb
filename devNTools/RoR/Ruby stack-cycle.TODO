@@ -1,0 +1,86 @@
+SaaS using Ruby:
+ ☐ Environment
+   ☐ using c9.io (must register, free), create a ruby workspace
+   ☐ sinatra - Ruby framework
+   ☐ webrick - webserver
+   ☐ rack - app server
+   ☐ cucumber -  Guide : vimeo.com/34754747 & vimeo.com/34754766
+   ☐ capybara
+   ☐ webmock - intercepts / simulates web requests / responses
+   ☐ Heroku account (free) - for deployment
+ ☐ Setup
+   ☐ mk a dir and do a git init
+   ☐ create a 'Gemfile' in the newly created dir
+   ☐ edit the content:
+       source 'https://rubygems.org'
+       ruby '2.2.2'
+       gem 'sinatra', '>= 1.4'
+   ☐ Run 'bundle' command, which will examine gem file and install the specified gem files and their dependancies
+   ☐ 'gem install bundler' - if bundle command is not available then install it
+   ☐ a Gemfile.lock will be created that records  list of actuall installed gems
+   ☐ commit changes
+ ☐ Develop
+   ☐ create app.rb, with the code below
+     require 'sinatra'
+
+     class MyApp < Sinatra::Base
+       get '/' do
+         "<!DOCTYPE html><html><head></head><body><h1>Hello World</h1></body></html>"
+       end
+     end
+   ☐ create 'config.ru' that controlls the rack application server, and include the text below
+     require './app'
+     run MyApp
+ ☐ BDD
+     ☐ include cucumWhenber-rails in gem file (then run bundle install)
+     ☐ rails generate cucumber:install, installs all the required files
+     ☐ rake cucumber (run BDD)
+     ☐ 
+ ☐ Test
+   ☐ Setting up
+     ☐ 'rackup -p $PORT -o $IP' in bash (starts the rack app server and webrick webserver)
+     ☐ point to web browser and run the URL, which will output the "Hello World" text
+     ☐ commit changes
+     ☐ need to restart 'rackup' command if code is changed
+     ☐ In order to allow webserver to recognize the changes and restart automatically do the following
+     ☐ edit the Gemfile and add the following text (it will recognize the rerun gem that is required only for development)
+        group :development do
+          gem 'rerun'
+        end   
+      ☐ rerun "rackup -p $PORT -o $IP" - this will run the web and app server
+   ☐ Rspec (test files are in spec folder)
+     ☐ add :pending => true (to mark a test as pending)
+     ☐ 'autotest' at app root, which will scan spec directory for unit-test files
+     ☐ make changes to the implementation then the autotest will refleft latest status of test through autotest
+   ☐ Cucumber (testing the web code (mvc))
+     ☐ cmd: cucumber feature/test.feature
+     ☐ cmd: cucumber feature (this will run all files) 
+  ☐ Pro guide for testing
+ ☐ Deploy
+    ☐ deployment to Heroku
+    ☐ 'wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh' - update toolbelt installation with command
+    ☐ heroku login - logon  to heroku account
+    ☐ 'heroku create' - creates a new project in heroku and links the git repository with a remote repository called heroku
+    ☐ commit changes
+    ☐ push the branch to heroku
+    ☐ creates a running instance in heroku
+    ☐ 
+ ☐ Rails
+   ☐ Run rails : rails s -p $PORT -b $IP
+   ☐ rake routes
+   ☐ rake db:migrate
+   ☐ rake db:seed
+   ☐ heroku run rake db:migrate
+   ☐ heroku run rake db:seed
+ ☐ References
+   ☐ 'curl', command-line tool to interact with external services 
+   ☐ example : url --data '' http://watchout4snakes.com/wo4snakes/Random/RandomWord
+   ☐ Sinatra provides the session and flash
+     ☐ Session to store messages throughout the interaction with the browser
+     ☐ flash to survive a message / data during a single interaction or redirection (status messages)
+   ☐ Debugging
+     ☐ RASP
+       ☐ Read the error message, really read it.
+       ☐ Ask a colleague
+       ☐ Search online
+       ☐ Post on forums / StackOverflow

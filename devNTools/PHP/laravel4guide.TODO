@@ -1,0 +1,47 @@
+Laravel4 Learning:
+ ☐ Installation
+   ☐ Install composer
+   ☐ Install laravel using composer, CMD:: composer create-project laravel/laravel
+   ☐ configure the /app/config/app.php 
+   ☐ configure the /app/config/database.php 
+   ☐ Can run own server cmd: artisan server (only if php 5.4 and above)
+   ☐ custom generator : get jeffrey way's generator
+     ☐ Include "way/generators": "dev-master" in composer.json
+     ☐ run composer update
+     ☐ add 'Way\Generators\GeneratorsServiceProvider' as provider in the config/app.php  
+ ☐ Database, Migrations & Seeding
+   ☐ Relationships
+     ☐ $this->belongsTo : to indicate many-to-one
+     ☐ $this->hasMany : to indicate one-to-many
+     ☐ $this->hasManyAndBelongsTo : to indicate many-to-many
+       ☐ this will automatically relate using a relationship table, table name format: table1_table2
+   ☐ use artisan migrate commands to do this
+   ☐ create seeders
+   ☐ migration & seeding can be done together, CMD:: artisan migrate --seed
+ ☐ The custom generator (resource) can create all the files required
+ ☐ Resourceful controllers
+   ☐ artisan controller:make
+     ☐ user only / except to specify what functions to exist
+ ☐ laravel guard (by jeffrey way)
+   ☐ get this from git and configure
+   ☐ used to minify codes (js & css)
+   ☐ Instant browser refreshing (liveload)
+    
+
+Laravel Migration in details:
+ ☐ Creating migrations
+   ☐ Run: "php artisan migrate:make create_posts_table --table=posts --create"
+   ☐ this creates a migration file in app/database/migration
+   ☐ modify the contents of the file, such as adding fields
+   ☐ Run: "php artisan migrate" to create the table
+ ☐ Rollback, Reset & refresh
+   ☐ Run: php artisan migrate:rollback to roll the migration back to the previous state
+   ☐ Run: php artisan migrate:reset to reset the migration back to the original state
+   ☐ Run: php artisan migrate:refresh to reset the migration and migrate based on the current changes 
+ ☐ Database seeding
+   ☐ create the seed file 'PostsTableSeeder.php' under the migration/seeds path
+   ☐ specify rows in arrays and call the insert method
+   ☐ make sure this class is called in the DatabaseSeeder class
+   ☐ run: "php artisan db:seed"
+   ☐ run: "php artisan migrate:refresh --seed", this will refresh the database and populate the table with the seeded info
+   ☐ 

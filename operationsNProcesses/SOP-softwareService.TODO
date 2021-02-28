@@ -1,0 +1,46 @@
+Discussion items:
+
+1. Streamlining workflow
+   1. communication
+   2. SOP
+   3. Slack, TeamworkPM & Trello
+   4. EKCMS Documentation
+   5. Getting Manoj and boss to use TW
+2. Team sitting arrangements
+3. EKCMS Plan for the year
+   1. Browser compatibility test
+   2. Planning items
+
+
+
+EKCMS SOP:
+ ☐ Elements covered in SOP items:
+   ☐ Communication
+   ☐ Processes
+   ☐ Documentation
+ ☐ SOP #1: New feature or feature upgrade
+   ☐ Get requirement
+   ☐ Prepare feature document
+   ☐ Discuss and analyse resources / timeline
+   ☐ flowchart and Mockups
+   ☐ Development work
+   ☐ SME Review
+   ☐ Ready for deployment
+ ☐ SOP #2: Bug fixing
+   ☐ Get bug details / report
+   ☐ Test / simulate bug discovery
+   ☐ plan bug fix & impact
+   ☐ Discuss and analyze resources / timeline
+   ☐ document changes and updates
+   ☐ development work
+   ☐ SME Review
+   ☐ Ready for patching
+ ☐ SOP #3: Deployment: Patching
+   ☐ Inform and confirm client on patch details and schedule
+   ☐ Patch changes / features into test environment
+   ☐ Test and verify
+   ☐ Training & Guide
+   ☐ Update the production service
+   ☐ Email patch update to customer
+ ☐ SOP #4: Data Migration
+ ☐ 

@@ -1,0 +1,94 @@
+Visual Studio IDE:
+ ☐ Tools -> Options -> Environment Startup : configure what you after startup
+ ☐ Ctrl + Dbl Click will return a window to it's default position
+ ☐ There are many windows in the IDE grouped in views, debug and test
+
+Visual Studio Shortcut Keys:
+ ☐ Windows
+   ☐ Ctrl + Alt + L : Solution explorer windows
+   ☐ Ctrl + , : Search Pallete
+   ☐ Ctrl + \, E : Error List panel
+   ☐ Ctrl + \, T : Task List panel
+   ☐ Alt + T, N, O : Nuget Manager Console
+   ☐ Alt + T, N, N : Nuget Manager Window
+ ☐ Navigating / Viewing
+   ☐ CTRL + M, CTRL + M : Toggle Collapse (method / class / region)
+   ☐ CTRL + M, CTRL + O : Collapse All in class / file
+   ☐ CTRL + M, CTRL + L : Expand All in class / file
+   ☐ CTRL + K, CTRL + K : Toggle Bookmark
+   ☐ CTRL + K, CTRL + K : Toggle Bookmark
+   ☐ CTRL + K, CTRL + W : Bookmark list window
+   ☐ CTRL + K, CTRL + N : Go to next bookmark
+   ☐ F12 : Go to definition
+   ☐ Ctrl + F12 : Go to declaration
+   ☐ Alt + F12 : Open Definition code window
+   ☐ Shft + F12 : Search result
+ ☐ Editing
+   ☐ Ctrl + L : Remove line
+   ☐ Ctrl + D : Duplicate line
+ ☐ Snippets
+   ☐ ctor : will create a constructor
+   ☐ prop or propfull : creates a property
+   ☐ cw : Console.Writeline
+   ☐ equals : creates the equals override
+   ☐ try : creates try catch block
+   ☐ try : creates try finally block
+   ☐ for / forr / foreach / do / while
+ ☐ Formatting / Indentating
+   ☐ Ctrl + K, Ctrl + F: automatically formats
+ ☐ Using productivity power tools
+   ☐ tools -> options -> productivity power tools -> powercommand general (format & remove and sort using)
+ ☐ Navigate
+   ☐ Ctrl + F6 : Cycle tabs
+   ☐ Alt + W + L : Close workspace / clear all tabs
+   ☐ Ctrl + Alt + x : Open toolbox
+   ☐ Ctrl + Alt + p : Attach to process
+ ☐ Workflow
+   ☐ Create a folder in a project
+      ☐ ctrl + alt + L
+      ☐ arrow keys (up/down) - select project / folder
+      ☐ Alt + P then D
+
+Resharper Shorcuts:
+ ☐ Navigate
+   ☐ Ctrl + T : Navigate to type / symbol / file name
+   ☐ Ctrl + Shft + T : Search Navigate to a file
+   ☐ Ctrl + , : Recent files
+   ☐ Ctrl + Shft + , : Recent Edits
+ ☐ Code navigation
+   ☐ Ctrl + Shft + Up / Down : Cursor to next occurance of the current type / symbol / variable
+   ☐ Ctrl + [ : Cursor to beginning of function or class
+ ☐ Selections
+   ☐ Ctrl + Shft + [ : Selects the whole declaration
+ ☐ Code editing
+    ☐ Ctrl + Shft + R (moving to file or folder)
+    ☐ Ctrl + Shft + V : Clipboard Items
+    ☐ Ctrl + E, U : Shortcode for controls and symbols
+    ☐ Ctrl + Alt + Shft + Up / Down : move code block
+    ☐ Ctrl + R + I : Inline Variable
+    ☐ Ctrl + R + R : Rename variable
+    ☐ Ctrl + R + F : Map to as class variable
+ ☐ PascalCases can be fuzzy searched: MyFirstVariable can be searched with mfv
+ ☐ Encapsulating a field or initializing it in constructor
+    ☐ create the field, press Ctrl + . to encapsulate
+    ☐ alt + enter to intialize from constructor
+    ☐ alt + / go to definitions in file
+
+Workflows:
+ ☐ Creating a class and moving it to it's own file
+   ☐ "class", tab : create a class
+   ☐ Ctrl + . and choose public : make public
+   ☐ prop / propfull : create fields
+   ☐ ctrl + [ : moves cursor to symbol (class)
+   ☐ Ctrl + . then enter : moves the symbol to a another file
+ ☐ Quickly creating a constructor that initalizes a field
+   ☐ ctor to create the constructor
+   ☐ specifiy parameter type (can use fuzzy pascal search)
+   ☐ space and ctrl + space to get the parameter name
+   ☐ Ctrl + . can choose to introduce and initialize field
+ ☐ Creating a constructor, inject with a parameter and assign to a class member (private)
+   ☐ ctor: creates a constructor
+   ☐ move curser to constructor
+   ☐ Specify type "humpback" search,
+   ☐ spacebar then ctrl + spacebar: type name selection from suggestion
+   ☐ ctrl + . : introduce and initialize field (creats a class member and assign it to the current parameter)

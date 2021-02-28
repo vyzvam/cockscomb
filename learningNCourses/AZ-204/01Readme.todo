@@ -1,0 +1,19 @@
+Exam Related:
+  Development of compute solutins and storage (25 to 30 %) + (10 to 15 %):
+    ☐ IaaS solutions
+    ☐ App Server web apps
+    ☐ Functions
+    ☐ Cosmos db storage
+    ☐ blob storage
+  Implementing security (15 to 20 %):
+    ☐ User authentication & authorization
+    ☐ Secure cloud solutions
+  Monitoring, troubleshooting & Optimizing solutions (10 to 15 %):
+    ☐ Integration of caching and content delivery solutions
+    ☐ Monitoring & logging
+  Connection and consumption of services and third-party services (25 to 30 %):
+    ☐ App service logic app
+    ☐ API management
+    ☐ event based solutions
+    ☐ messaged based solutions
+

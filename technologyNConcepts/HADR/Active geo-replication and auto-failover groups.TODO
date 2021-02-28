@@ -1,0 +1,35 @@
+Active geo-replication and auto-failover groups:
+	☐ If geo-replication is enabled, the application can initiate failover to a secondary database in a different Azure region. 
+		Up to four secondaries are supported in the same or different regions, secondaries can also be used for read-only access queries. 
+		Failover must be initiated manually by the application or the user. 
+		After failover, the new primary has a different connection end point.
+    ☐ Active Geo-replication is not available in Managed Instance.
+    ☐ Auto-failover groups is an extension of active geo-replication. 
+      Designed to manage the failover of multiple geo-replicated databases simultaneously 
+	  Uses an application initiated failover or delegating failover done by the SQL Database 
+	  service based on a user defined criteria which allows automatic recovery of multiple related databases in a secondary region
+	☐ Additionally, you can use the readable secondary databases to offload read-only query workloads. 
+	  Because auto-failover groups involve multiple databases, these databases must be configured on the primary server. 
+    ☐ Both primary and secondary servers for the databases in the failover group must be in the same subscription. 
+    ☐ Auto-failover groups support replication of all databases in the group to only one secondary server in a different region.
+    Active geo-replication capabilities:
+      ☐ Automatic Asynchronous Replication
+	  ☐ Seeding process
+	     secondary database created by adding to an existing database and can be created any Azure SQL Database server. 
+	     The secondary then is populated with the data copied from the primary database. . 
+	  ☐	Updates to the primary database are asynchronously replicated to the secondary database automatically. 
+	     transactions are committed on the primary database before they are replicated to the secondary database.
+      ☐ Readable secondary databases
+   	    secondary database accesible for read-only operations using the same or different security principals. 
+	    secondary operate in snapshot isolation mode to ensure replication of the updates of the primary 
+		(log replay - delayed if there are schema updates on the Primary. The latter requires a schema lock on the secondary database.) 
+		is not delayed by queries executed on the secondary.	
+      ☐ Multiple readable secondaries
+      ☐ Support of elastic pool databases
+     	 Each replica can separately participate in an Elastic Pool or not be in any elastic pool at all. 
+	     Each Elastic Pool is contained within a single region
+      ☐ Configurable compute size of the secondary database
+      ☐ User-controlled failover and failback
+      ☐ Keeping credentials and firewall rules in sync
+
+

@@ -1,0 +1,152 @@
+Introduction to Enterprise Architecture:
+ ☐ What is enterprice architecture
+   ☐ The ability to adapt to changes, changes in terrain and climate
+   ☐ The capacity to thrive in a challenging environment, competitors, change of need or time
+   ☐ The ability to execute tasks fast and effective, prioritizing and shuffling tasks
+   ☐ doing the above while there are changes in objectives
+ ☐ The purpose of EntFra is to optimise an enterprise into an environment that is responsive to business needs
+   ☐ Provides a foundation to support the development of business strategy and enables informed decision-making
+   ☐ Provides a comprehensive description of an organisation
+   ☐ involves creating a current state and a future state view of the organisation's capabilities and assets
+ ☐ What is a framework
+   ☐ with the objective of reducing disadvantages, prolonging advantages and creating advantages
+   ☐ understand the unresolved issues and funnel it through to a repeatable business processes
+   ☐ TOGAF framework helps define the utility (foundation) of a business
+     ☐ General, complimentatry, wide adoption, customizable, Free, agnostic
+     ☐ Open standard, prevents Re-invention, strong alignment of departments
+     ☐ used best practices, Glues all the cmponents togetehr, there is a vast community
+   ☐ TOGAF Intro
+     ☐ A mean to bring order to chaos (components of a business working together)
+     ☐ made up of repository, methods, and outcomes
+     ☐ Having a repository, having processes based on the repository then having a outcome
+     ☐ Architectureal capability
+     ☐ Architectureal development method (guidelines and techniuques)
+     ☐ Architectureal content framework
+     ☐ Enterprice continuum (repository and tools)
+   ☐ Organizing bulding blocks
+     ☐ Enterprise Continuum has (building from general to specific)
+       ☐ Archtectural Continuum (Building blocks)
+         ☐ Foundation (TRM: Technical reference model)
+         ☐ Common (III-RM)
+         ☐ Industry
+         ☐ Organizational
+       ☐ Solution Continuum (building blocks)
+         ☐ same as architecture
+     ☐ Establishing a common language
+       ☐ Content framework (A structured metamodel for architectural artefacts)
+     ☐ Managing Architecture knowledge
+     ☐ Creating and using building blocks
+       ☐ setup a axle and wheel
+         ☐ 
+       ☐ Architecture development method (ADM)
+         ☐ Establishing the architecture governance model
+         ☐ Establishing the architecture capability
+         ☐ Tailoring the architecture method
+     ☐ Visualizing the building blocks
+       ☐ Viewpoints of stakeholders' concerns , stored into viewpoint library
+       ☐ viewpoints are turned into views then into models then into architecture models
+     ☐ Capability Based Planning
+       ☐ the ability of people, tools, processes and knowledge of a area / department / team
+       ☐ 
+     ☐ Module 1 - An Enterprise Architecture Framework Assessment
+       ☐ Architecture Development Method (ADM) provides a number of architecture development phases, with narratives for each phase
+       ☐ A collection of building blocks and the relationships between them can represent an architecture
+       ☐ The primary purpose of The Open Group is Promotion of consensus to open standards in all areas of information technology
+       ☐ Characteristic of a foundation architecture is It contains building blocks and their corresponding standards
+       ☐ capability-based planning is a A business planning technique that focuses on business outcomes
+       ☐ main purpose of a business is to Prolong advantages, Build more advantages & Reduce disadvantages
+       ☐ the Open Group Architecture Framework (TOGAF) defines the underlying utility layer of business.
+       ☐ The Open Group Architecture Framework (TOGAF) can be adopted on a global scale
+       ☐ Language is an important factor, it helps reduce arguments over concept definitions during the initial stages of meetings.
+       ☐ The role of an architectural knowledge repository is to organise and manage knowledge effectively
+ ☐ Ent Arch Development
+   ☐ Dealing with complexity
+     ☐ division of 3 layers (top to bottom), strategic , segment, capability
+     ☐ segments can be positioned in different locations, state, country
+   ☐ ADM Iterations   
+     ☐ spin the strategic architecture through the wheel
+     ☐ spin each of the segment architecture through the wheel
+     ☐ spin each of the capability architecture through the wheel
+     ☐ during the spin in strategic, by the time reaching the migration planning there will be resolution that is the output and becomes the input for the segment wheel and again down tot the cabability spin of the wheel. 
+   ☐ Establishing a Vision
+     ☐ Understanding the requirement of the organization
+     ☐ Extract them if they don't exist, model them if they do
+     ☐ Architecture vision document which looking to achive statement of architecture work (SOAW)
+       ☐ what is the strategy
+       ☐ what is to achieve
+       ☐ what are we trying to do
+       ☐ BDAT (Business data application and technology)
+       ☐ Readiness or change readiness
+       ☐ Stakeholders
+     ☐ statement of architecture work (SOAW)
+       ☐ traditional time 
+       ☐ cost 
+       ☐ effort
+   ☐ View, Viewpoints & Concerns
+     ☐ views, different perceptions by all the people who are part of the organization or the framework
+       ☐ People / role / process concept
+     ☐ viewpoint, a instruction set on how to assemble the views to address the concerns of the stakeholders
+     ☐ Architecture development Iteration
+       ☐ Business
+       ☐ Information system
+       ☐ Technology
+       ☐ Look ate views and viewpoints of stakeholders
+       ☐ reference model
+       ☐ what is my current state as-is environment
+       ☐ what is the future state
+       ☐ what is the gap between two
+     ☐ Business scenario technique
+       ☐ business scenario planning (starts at the vision architecture)
+       ☐ solve 2 problems, problem -> solution, strategy -> tactics
+     ☐ Developing Business architecture
+     ☐ Developing Data architecture   
+       ☐ Take note, The term technology can constitute to other disciplines
+       ☐ identifying technology
+       ☐ identifying database to store data
+       ☐ capability
+         ☐ how tos on processes
+         ☐ how tos on functions
+     ☐ Application architecture
+       ☐ bringing the business world and data world
+     ☐ Technology Architecture
+       ☐ stringing together technology components
+       ☐ has application logical model, grouped functionalities and data schema     
+       ☐ How do i develop, run, operate and manage it
+       ☐ This is a utility space
+       ☐ Infrastructure and platform identification and definition
+       ☐ the different tools required to develope, operate and manage
+       ☐ technology reference model 
+         ☐ requirements
+         ☐ infrastructure
+         ☐ platform
+       ☐ result will be technology architecture reference model
+         ☐ In Phase C, identification of data migration requirements should be done in Data Architecture when an existing application is to be replaced.
+         ☐ Business Architecture is the first architecture activity you should undertake since It provides the business context required to inform the work in other architecture domains.
+         ☐ Views and viewpoints are used by an architect to capture, model and communicate stakeholder concerns.A viewpoint is the perspective of an individual stakeholder.
+         ☐ Within the Architecture Repository, Reference Library holds best practice or template materials that can be used to construct architectures.
+         ☐ "Level of detail" is a useful dimension to consider for architecture partitioning?
+         ☐ Architects commence their iterations with "Previous work"
+         ☐ Janitor, Project manager and c-level individuals are examples of a stakeholder?
+         ☐ The environment is an important factor that requires consideration when dealing with a business scenario.
+         ☐ Market, product and services, & operating model describes the components of a business model?
+         ☐ The information systems architecture consists of an application domain and a data domain.
+ ☐ Transformation Planning    
+   ☐ Transition Iteration
+     ☐ In pahse E (opportuniteis and solutions ) and F (Migration planning)
+     ☐ Gap analysis
+       ☐ As is and To Be comparison
+       ☐ help build gap analysis (identify new changes, removed or added)
+       ☐ 
+
+
+
+
+
+
+
+
+
+
+
+
+

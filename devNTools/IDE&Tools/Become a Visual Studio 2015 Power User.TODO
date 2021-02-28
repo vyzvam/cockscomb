@@ -1,0 +1,21 @@
+Become a Visual Studio 2015 Power User:
+ ☐ Window layout profiling in "Window" menu
+ ☐ Quick Launch: Ctrl + Q Search everything in VS
+ ☐ Scope to this option focuses on the selected project
+ ☐ Diagnostic tool - Ctrl + Alt +F2
+ ☐ Peek window
+   ☐ Open (multiple - alt + f12
+   ☐ navigation - Ctrl + Alt + (+/-)
+ ☐ Codelense
+   ☐ Press Alt then the number (appears on the code lense)
+   ☐ Navigate, Alt + (left/right)
+ ☐ 
+
+
+
+ c# 7:
+  ☐ inline out variable : int.TryParse(stringValue, out int intValue)
+  ☐ pattern matching : if (ageValue is int intAgeValue)
+  ☐ powerful switch statements:
+  ☐ Throw in exceptions
+  ☐ Tuples: public (string firstName, string lastName) GetName() { return ("firstName", "LastName");}

@@ -1,0 +1,529 @@
+MongoDB .Net:
+ ☐ What is MongoDB
+   ☐ is a non relational data store for JSON documents
+   ☐ is schemaless and document oriented
+   ☐ does not supports joints
+   ☐ does not have transactions
+ ☐ Download, install and configure mongodb
+   ☐ Download, install
+   ☐ Configure to be global access
+   ☐ create a directory to store the database (md /data/db)
+   ☐ Run mongod, to run the server (tcp listens)
+   ☐ Run mongo in a different command to access the data (by default connects to 'test' database)
+   ☐ insert data into a collection
+     ☐ db.names.insert({'name': 'Subathiran Subramaniam' });
+     ☐ names being the collection
+     ☐ insert is the command
+   ☐ query the collection
+     ☐ db.names.find();
+     ☐ find is the command (may have parameters to filter results)
+   ☐ mongorestore <foldername>, to restore a database
+   ☐ use <database name> Changing to different database
+   ☐ show collections, shows a list of collection in the database
+ ☐ JSON Structure
+   ☐ arrays, dictionary
+   ☐ can mix both
+ ☐ Homework
+   ☐ install mongo
+   ☐ dump / restore command
+   ☐ 
+ ☐ CRUD (Create, Read, Update, Delete)
+ ☐ mongodb uses, IFUR (Insert, Find, Update, Remove)
+ ☐ mongo db has a wire protocol instead queries 
+ ☐ using mongo
+   ☐ it's a javascript intrepreter
+   ☐ help , to get a documentation
+ ☐ BSON   (Binary javascript object notation)
+   ☐ BSONspec.org
+   ☐ Does not support complex numbers at the moment
+ ☐ insert:
+   ☐ doc = {name: "rose", color: "red", shape: "round"}
+   ☐ db.fruit.insert(doc)
+ ☐ findOne, mongo has a helper method called findOne(), which has 2 optional parameters
+   ☐ 1st, the condition / filter / restriction
+   ☐ 2nd, what fields to retrieve
+   ☐ examples
+     ☐ db.people.findOne()
+     ☐ db.people.findOne({"name": "suba"})
+     ☐ db.people.findOne({"name": "suba"}, {"name":true, "_id": false})
+ ☐ use .pretty() , to print formatted result
+ ☐ using operators
+   ☐ db.scores.find( {"score": {$gt:95} } ), where gt is (greater than)
+   ☐ db.scores.find( {"score": {$gt:95, $lte:98} } ), where lte is (less than or equals to)
+   ☐ $gt, $lt is also applicable to strings
+   ☐ $exists, returns if the key exists in the collection, db.people.find( {profession: {$exists: true} })
+   ☐ $type, return if the value is of certain type (based on BSON spec), db.people.find( {profession: {$type: 2} })
+   ☐ $regex, returns if the value of a key meets the regex condition, db.people.find( {profession: {$regex: "a"} })
+   ☐ $or, filter for or condition, db.people.find( { $or : [ { name: {$regex: "e$"} }, { age: { $exists: true } } ] )
+   ☐ grouping symbols ([]{}), will be highlighted in blue when the cursor is on one of the matching symbol.
+   ☐ mongo will return "..." if there is an error in the matching symbol.
+   ☐ $and db.people.find( { $and : [ {"name": {$gt: "C"} }, {$regex: "a"} ]} )
+   ☐ $in & $all, condition where if a value is in a record ($in) or get $all with the conditions met
+   ☐ Dot notations - 
+     ☐ db.people.find("email": {work: "suba@google.com"});  will not work
+     ☐ db.people.find({"email.work  ": "suba@google.com"});  will work
+   ☐ What happens in mongo when a query is being executed
+     ☐ when no result is required after a command , supply null, eg, db.people.find(); null;
+     ☐ can assign results to a variable which is an object and has functions to be accessed
+     ☐ cur.next(), cur.hasNext(), 
+     ☐ cur.limit(4), cur.sort( {[name: -1}]), cur.skip(2), applies the function on the object that will be rememberd on later commands
+   ☐ counting: db.scores.count({"type": "exam"}) or db.scores.count({ "type": "essay", "score": {"$gt": 90}}){}
+   ☐ db.people.update(), updates record(s) based on a condition
+     ☐ db.people.update( {"name": "suba"}, {"name": "subathiran", "salary", 30000}),   
+     ☐ this will update the name and salary fields of people with name "suba" , (it will also remove all the other information)
+   ☐ $set, db.people.update( {"name": "suba"}, {"$set": {"age": 4}}), this updates the specified field without removing the other fields
+   ☐ $inc, db.people.update( {"name": "suba"}, {"$inc": {"age": 4}}), this increments to the existing field
+   ☐ $unset, removes a field from a collection
+     ☐ $set, db.people.update( {"name": "suba"}, {"$unset": {"age": 4}}), any value can be given to the key that to be unset
+   ☐ Array manipulation
+     ☐ db.arrays.update( {"_id": 0}, {$set: {"a.2": 5}} )
+     ☐ db.arrays.update( {"_id": 0}, {$push: {"a": 6}})
+     ☐ db.arrays.update( {"_id": 0}, {$pop: {"a": 1}}), removes the right most element
+     ☐ db.arrays.update( {"_id": 0}, {$pop: {"a": -1}}), removes the left most element
+     ☐ db.arrays.update( {"_id": 0}, {$pushAll: {"a": [3,4,5,6]}}), 
+     ☐ db.arrays.update( {"_id": 0}, {$pull: {"a": 6}}), removes the array item with the value 6 
+     ☐ db.arrays.update( {"_id": 0}, {$pullAll: {"a": [5,6,7]}}), 
+     ☐ db.arrays.update( {"_id": 0}, {$addToSet: {"a": 5}}), adds the value into the array if it doesnt exist
+   ☐ Upserts, 
+     ☐ db.people.update( {"name": "suba"}, {"$set": {"age": 4}}, {upsert: true}), this updates the specified field or adds if it doesn't exist
+   ☐ Multiple update, 
+     ☐ db.people.update({}, {"title": "Dr"}, {multi: true}), update all records' title to "Dr"
+     ☐ if multi is not specified only the first available document is updated
+   ☐ Removing data, db.people.remove()
+     ☐ db.people.remove({}) removes all data
+     ☐ db.people.remove({'name': 'droid'}, {justOne: true}) removes only one document matching the condition
+     ☐ db.people.drop(), will drop the collection
+     ☐ db.peopelremove( {"name": "suba"}), remove data(s) with name suba
+ ☐ Importing, mongoimport -d students -c grades < grades.json
+ ☐ HOMEWORK: HOMEWORK 2.1: 
+   ☐ db.grades.find({score: {$gte:65}}).sort({score: 1})
+   ☐ answer : 22
+ ☐ MongoDb Schema
+   ☐ Supports Rich Documents
+   ☐ Pre join / embded data
+   ☐ No mongo joins
+   ☐ No constraints
+   ☐ Atomic operations
+   ☐ No declared schema
+   ☐ One to One : can be in 2 collection or 1 as long as the combined size will not be more than 16mb
+   ☐ One to Many : its best to have to collection where one collection links to the many collection
+   ☐ One to Few: its best to embed the few collection in to the one collection
+   ☐ Many to Many: similar like rdbms, but can have the link both ways for performance reasons
+   ☐ Multikey Indexes: 
+     ☐ db.students.ensureIndex({'teachers'}), applies index on the teachers array containing all the relevant ids from the teachers collection
+     ☐ db.students.find({'teachers': {$all: [1,2]}}), returns the relevant data from the students collection
+     ☐ db.students.find({'teachers': {$all: [1,2]}}).explain(), shows the details of operation
+ ☐ Storage Engines: the components that get instruction from mongo server and writes to the disk
+   ☐ Pluggable Storage engines: can choose storage engines depending on scenarios, for the mongo server to work with
+     ☐ MMAP (default)
+     ☐ WiredTiger
+   ☐ Storage engine doesn't
+     ☐ effect the communication between mongo servers
+     ☐ doesn't effect the API (development API)
+   ☐ MMAP v1
+     ☐ creates a virtual memory of allocated physical
+     ☐ the accesses the physical memory via the virtual memory (page sized)
+     ☐ collection level locking: 
+     ☐ automatically allocates power-of-two-sized documents when new documents are inserted, This is handled by the storage engine.
+     ☐ built on top of the mmap system call that maps files into memory, This is the basic idea behind why we call it MMAPv1.
+     ☐ does not offer document-level locking It has collection level locking.
+     ☐ MongoDB does not manage the memory used by each mapped file, deciding which parts to swap to disk. The operating system handles this.
+   ☐ WiredTiger
+     ☐ Lock free implementatoin
+     ☐ document level concurrency
+     ☐ offers compresion of documents and indexes
+   ☐ To select the storage engine:
+     ☐ close the mongod 
+     ☐ mkdir WT
+     ☐ mongod -dbpath WT --storageEngine wiredTiger
+     ☐ db.<collection>.stats() will tell the stats include the type of storeEngine
+ ☐ Indexes
+   ☐ Creating, db.students.createIndex({student_id: 5});
+   ☐ Compounding, db.students.createIndex({student_id: 5, class_id: -1});
+   ☐ Getting, db.students.getIndexes();
+   ☐ deleting, db.students.dropIndex({student_id:1});
+   ☐ Multikey indexes
+     ☐ compounding an array with an object
+     ☐ cannot compound array and array (mongo does not permit this)
+     ☐ Notations
+       ☐ db.students.createIndex({'scores.score':1});
+       ☐ db.people.createIndex({'working_history.company':-1});
+   ☐ $elemMatch, matching of a single or more matching key value in an array 
+     ☐ db.students.find({'scores': {$elemMatch: {'type': 'scores.exam', 'scores.score': {$gt:99.8}}}})
+   ☐ Unique indexing: 
+     ☐ db.students.createIndex({'name':1}, {unique:true});
+     ☐ db.students.createIndex({'student_id':1, 'class_id':1},  {unique:true});
+   ☐ Sparse Indexing: unique indexing a key that may not exist in certain documents ({key: null})
+     ☐ db.employees.createIndex({'cell':1}, {unique:true, sparse:true});
+   ☐ Background Indexing:
+     ☐ foreground fast, blocks writes and reads in database
+     ☐ background slower, doesn't block writes and read in database, it is costly
+       ☐ db.students.createIndex({'scores.score':1}, {background: true});
+     ☐ if in a multi database nodes, can bring one offline and apply foreground indexing and attache it back to the set
+ ☐ db.students.explain() / db.students.explain(true) (chain with the function) will give a lot of details of query operations
+   ☐ it describes the work and stastics on the query done on the collection
+   ☐ can apply to a cursor
+   ☐ can be apply before query (go get an explainable object)
+   ☐ or apply explain after query
+   ☐ Verbosity (by default is query planner mode)
+     ☐ modes: query planner, execution stats, all plans execution
+     ☐ db.example.explain({'executionStats'});
+     ☐ db.example.explain({'allPlansExecution'});
+   ☐ Covered Queries: satisfying a query entirely by the index, the explain result will show document examined as 0
+   ☐ When is an index is used
+     ☐ the query uses an index based on the index order of creation or reverse (btree)
+   ☐ How large are indexs
+     ☐ stats(), e.g, db.students.stats() show the details of the stats for the student collection (including indexes size)
+     ☐ wiredTiger uses prefix compression allowing slower indexes
+   ☐ Index Entries
+   ☐ in terms of updating index entries. That cost only exists in the MMAPv1 storage engine. 
+   ☐ In WiredTiger storage engine, index entries don't contain pointers to actual disk locations. Instead, 
+   ☐ in WiredTiger, the indexes contain _id values. As _id is immutable, the indexes don't change for document moves, 
+   ☐ although document moves do require updating the index that translates between _id values an disk locations.
+   ☐ Cardinality (size)
+     ☐ Regular : 1:1
+     ☐ Sparse : <= documents
+     ☐ Multikey: > number of documents
+   ☐ Geospatial Indexes: 2D model 
+       ☐ ensureIndex: db.stores.createIndex({'location': "2d", type:1}); this is a 2d coordinate indexing compounded with desc order by type
+       ☐ db.stores.find({'location': {$near:[50,50]}})
+     ☐ Geospatial Spherical: 3D model
+       ☐ geojson.org, data specification
+       ☐ db.places.createIndex({'location': '2dsphere'});
+       ☐ 
+         db.stores.find({
+            loc: {
+                $near: {
+                    $geometry: {
+                        type: "Point", 
+                        coordinates: [-130, 39]
+                    },
+                    $maxDistance: 1000000
+                } 
+            }
+         });
+   ☐ Text Index
+     ☐ db.sentences.createIndex({'words': 'text'});
+     ☐ a regex search will search the index (rather than the full collection), and if you anchor it on the left by beginning with ^
+     ☐ full text search: db.sentences.find({$text: {$search:'dog'}});
+     ☐ 
+       db.sentences.find(
+         {$text: {
+           $search:'dog is white'
+         }},
+         {score: {$meta: 'textScore'}} 
+       )
+       .sort({score:{$meta:'textScore'}});
+   ☐ Designing / Using Indexes: Goal = Efficient read / write operations
+     ☐ Selectivity - Minimized records scanned and How are sorts handled
+       ☐ using hint forces the query optimizier to use the specified index
+       ☐ db.students.find({student_id:{$gt:500000}, class_id:54}).sort({student_id:1}).hint({class_id:1}).explain("executionstats")
+       ☐ if multiple sortorder is specifed in the query then the index should follow ther order of the sort
+   ☐ Logging & profiling
+     ☐ mongod logs slow queries (above 100ms)
+     ☐ profiler: 0 = off, 1 = log slow queries, 2 = log all queries
+     ☐ command: mongod -dbpath /data/db --profile 1 --slowms 2
+     ☐ db.system.profile.find().pretty()
+     ☐ db.system.profile.find({ns:/test.foo/}).sort({ts:1}).pretty()
+     ☐ db.getProfilingLevel();
+     ☐ db.getProfilingStatus();
+     ☐ db.setProfilingLevel(1,4);
+     ☐ db.setProfilingLevel(0);
+   ☐ mongotop
+     ☐ mongotop 3 (runs the mongotop every 3 seconds)
+   ☐ mongostat (performance tuning command)
+     ☐ can observe how mongo is performing
+ ☐ Sharding
+  ☐ Deploying multiple mongod servers
+  ☐ mongos talks to the mongod's (using shard keys)
+ ☐ Aggregation
+   ☐ Aggregation Framework
+    ☐ getting the count by group: db.products.aggregate([{$group: {_id: '$manufacturer', num_products:{$sum:1}}}])
+    ☐ getting sum value of a document by group: db.products.aggregate([{$group: {_id: '$manufacturer', sum_prices:{$sum:'$price'}}}])
+   ☐ Aggregation pipeline
+    ☐ $project: reshape data (visualization) (1:1)
+    ☐ $match: used for filtering (n:1)
+    ☐ $group: aggregate (n:1)
+    ☐ $sort: sorting of docs (1:1)
+    ☐ $skip: skipping (n:1)
+    ☐ $limit: limiting result (n:1)
+    ☐ $unwind: normalize (1:n)
+    ☐ $out: output (1:1)
+    ☐ $redact, $geonear
+   ☐ Compound grouping   
+    db.products.aggregate( 
+      [ 
+        { $group: 
+          {_id: 
+            {
+              'manufacturer':'$manufacturer', 
+              'category': '$category'
+            },
+            num_products: {$sum: 1}   
+          }
+        } 
+      ] 
+    )
+   ☐ using a document for _id (the _id field can be a document)
+    ☐ db.foo.insert({_id: {name:'suba', class:'m101'}, hometown: 'amp'});
+   ☐ Aggregation expresion used in the $group stage
+    ☐ $sum: it counts or sums the values
+    ☐ $avg:
+    ☐ $min:
+    ☐ $max:
+    ☐ push: adds to array
+    ☐ $addToSet: adds to array if doesn't exist
+    ☐ $first, $last: require the documents to be sorted, 
+   ☐ Double grouping
+      db.grades.aggregate([
+        {
+          $group: { 
+            _id: {'class_id': '$class_id', 'student_id': '$student_id'},
+            'average': {$avg: '$score'}
+            }
+        },
+        {
+          $group: {_id: '$_id.class_id', 'average': {$avg:'$average'}}
+        }
+      ]) 
+   ☐ Using $project
+      db.zips.aggregate([{
+          $project: {
+              _id:0,
+              'city': {$toLower: '$city'},
+              'pop': 1,
+              'state': 1,
+              'zip': '$_id'
+          }
+      }])
+   ☐ using $match
+  db.zips.aggregate([
+    {$match: {state:'CA'}
+
+    },
+    {
+      $group: {
+        _id: '$city',
+        population: {$sum: '$pop'},
+        zip_codes: {$addToset: '$_id'}
+
+      }
+    }
+  ])
+ ☐ Homework
+   ☐ Homework 5.1 (workspace)
+     ☐ web shell
+      db.posts.aggregate([
+        {$unwind: '$comments'},
+        {$group: {_id: {'author': '$comments.author'}, comments: {$sum:1}}},
+        {$sort: {comments:-1}},
+        {$limit: 1}
+      ])
+     ☐ Local db
+      db.posts.aggregate([
+        {$unwind: '$Comments'},
+        {$group: {_id: {'author': '$Comments.author'}, comments: {$sum:1}}},
+        {$sort: {comments:-1}},
+        {$limit: 1}
+      ])
+
+   ☐ Homework 5.2 (workspace)
+      db.zips.aggregate([
+        {$match: { $or: [{state :'CT'}, {state:'NJ'}]}},
+        {$group: {_id: '$city', population: {$sum: '$pop'}}},
+        {$match: {pop :{$gt:25000}}},
+      ])
+
+      db.zips.aggregate([
+        {$match: { $or: [{state :'CT'}, {state:'NJ'}]}},
+        {$group: {_id: {city:'$city'}, sum_pop: {$sum: '$pop'}}},
+        {$match: {sum_pop :{$gt:25000}}}
+      ])
+
+
+      db.zips.aggregate([
+        {$match: { $or: [{state :'CT'}, {state:'NJ'}]}},
+        {$group: {_id: {city:'$city'}, sum_pop: {$sum: '$pop'}}},
+        {$match: {sum_pop :{$gt:25000}}},
+        {$group: {_id: null, avg_pop: {$avg: '$sum_pop'}}}
+      ])
+
+      db.zips.aggregate([
+        {$match: { $or: [{state :'CA'}, {state:'NY'}]}},
+        {$group: {_id: {city:'$city'}, sum_pop: {$sum: '$pop'}}},
+        {$match: {sum_pop :{$gt:25000}}},
+        {$group: {_id: null, avg_pop: {$avg: '$sum_pop'}}}
+      ])   
+    ☐ Homework 5.3
+      db.grades.aggregate([
+        {$unwind: '$scores'},
+        {$limit:1}
+      ])
+
+
+      db.grades.aggregate([
+        {$unwind: '$scores'},
+        {$match: { $or: [{'scores.type' :'homework'}, {'scores.type':'exam'}]}},
+        {$group: {_id: {'class_id': '$class_id', 'student_id': '$student_id'}, avg_score: {$avg: '$scores.score'}}}
+      ])
+
+      db.grades.aggregate([
+        {$unwind: '$scores'},
+        {$match: { $or: [{'scores.type' :'homework'}, {'scores.type':'exam'}]}},
+        {$group: {_id: {'class_id': '$class_id', 'student_id': '$student_id'}, avg_score: {$avg: '$scores.score'}}},
+        {$sort: {'_id.class_id':1, '_id.student_id':1}}
+      ])
+
+      db.grades.aggregate([
+        {$unwind: '$scores'},
+        {$match: { $or: [{'scores.type' :'homework'}, {'scores.type':'exam'}]}},
+        {$group: {_id: {'class_id': '$class_id', 'student_id': '$student_id'},avg_score: {$avg: '$scores.score'}}},
+        {$group: {_id: '$_id.class_id', avg_class: {$avg: '$avg_score'}}},
+        {$sort: {'avg_class':-1}}
+      ])
+   ☐ Homework 5.4
+     db.zips.aggregate([
+      {$project: {first_char: {$substr : ["$city",0,1]}}}
+    ])
+
+    db.zips.aggregate([
+        {$project : {_id:0,city:{$substr:["$city",0,1]}, pop: '$pop'}},
+        {$sort : {city : 1}}, 
+        {$match: {city: /^\d.*$/}}
+    ]);
+
+    db.zips.aggregate([
+        {$project : {_id:0,city:{$substr:["$city",0,1]}, pop: '$pop'}},
+        {$match: {city: /^\d.*$/}}
+    ]);
+
+    db.zips.aggregate([
+        {$project : {_id:0,city:{$substr:["$city",0,1]}, pop: '$pop'}},
+        {$match: {city: /^\d.*$/}},
+        {$group: {_id:'$city', 'total': {$sum:'$pop'}}}
+    ]);
+
+    db.zips.aggregate([
+        {$project : {_id:0,city:{$substr:["$city",0,1]}, pop: '$pop'}},
+        {$match: {city: /^\d.*$/}},
+        {$group: {_id:null, 'total': {$sum:'$pop'}}}
+    ]);
+ ☐ App Engineering
+   ☐ Write concerns
+     ☐ mongodb server has two components, 1 the memory that contains maped pages of the collection, and 2 the journal that periodically updates the database with change logs
+     ☐ W, wait value (application return value after writing into the mongodb memory) and J, journal wait value
+     ☐ by default , W = 1, J = false, small window of vurnlabelity but fast
+     ☐ set W = 1, J = true, slow
+   ☐ Network Errors
+   ☐ Replication
+     ☐ Set of mongo nodes that act together (primary and secondaries)
+     ☐ when primary goes down, the the nodes will go through 'election' to select the next primary
+     ☐ Replica set type (node types)
+       ☐ Regular - primary and secondaries
+       ☐ Arbiter - for voting purposes
+       ☐ Delayed - cannot become a primary node
+       ☐ Hidden - cannot be primary, 
+     ☐ Read and write is done to the primary thus does not offer eventual consistency
+     ☐ eventual consistency can be done by reading from secondaries
+     ☐ Creating a replica set (assuming 3)
+       ☐ create 3 different data sources & setting up the sets
+          mkdir -p /data/rs1 /data/rs2 /data/rs3
+          mongod --replSet m101 --logpath "1.log" --dbpath /data/rs1 --port 27017 --oplogSize 64 --fork --smallfiles
+          mongod --replSet m101 --logpath "2.log" --dbpath /data/rs2 --port 27018 --oplogSize 64 --smallfiles --fork
+          mongod --replSet m101 --logpath "3.log" --dbpath /data/rs3 --port 27019 --oplogSize 64 --smallfiles --fork
+       ☐ run 3 mongods using different ports
+       ☐ create a configuration (in a js file)
+         config = {
+           _id: rs1, 
+           members: {
+             {_id: 0, 'localhost:27107', priority:1, slaveDelay:5},
+             {_id: 1, 'localhost:27107'},
+             {_id: 2, 'localhost:27107'}
+           }
+         }
+         rs.initiate(config)
+         rs.status()
+
+         or 
+
+         config = { _id: "m101", members:[
+          { _id : 0, host : "localhost:27017"},
+          { _id : 1, host : "localhost:27018"},
+          { _id : 2, host : "localhost:27019"} ]
+        };
+
+        rs.initiate(config);
+        rs.status();
+
+       ☐ connect to one of the secondary set, mongo --port 27018 < replica_init.js 
+       ☐ disconnect and connect again and do a rs.status()
+       ☐ command line will indicate which is current node
+     ☐ checking oplogs
+       ☐ switch to local db
+       ☐ run db.oplog.rs.find();
+     ☐ Failover and rollbacks
+       ☐ When a primary that has writes that are not replicated to the secondaries goes down, a secondary will be elected as a primary
+       ☐ The new primary will have have the writes from the previous primary and when the previous primary comes back online as a secondary
+       ☐ It will roll back those writes since the current primary does not have those writes.
+       ☐ If a node comes back up as a secondary after a period of being offline and the oplog has looped on the primary, The entire dataset will be copied from the primary
+     ☐ Write Concern
+       ☐ w ( number of nodes to wait for till it writes) wtimeout
+       ☐ j ( applicable for the primary node, true / false)
+       ☐ can be set (using driver) in , client, collection or replicaSet
+       ☐ w = 'majority' (write acked by majority of the nodes) can be used as well to avoid rollbacks on failovers
+       ☐ w can be linked to tags (which are assigned to replicas)
+     ☐ Read preference
+       ☐ by default read from primary, can read from secondary. here are the options
+         ☐ Primary, only read from primary
+         ☐ PrimaryPreffered, read from primary but can read from secondary if primary down
+         ☐ secondary, read rotate from secondaries only (eventual consistency)
+         ☐ secondaryPreffered, read from secondary, but if secondary not available read from primary
+         ☐ Nearest, read from the closest (ping time)
+   ☐ Sharding
+     ☐ To handle Big data to be distributed throughout shards
+     ☐ Shards are used  a router called MongoS
+     ☐ Range based, where the collections are broken up in to chunks and stored in the shards
+     ☐ Hash Based, 
+     ☐ Sample (building 3 shards, each with 3 replica sets)
+       ☐ 
+
+     
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

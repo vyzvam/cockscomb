@@ -1,0 +1,53 @@
+Dev Stack in Ubuntu 15 (VirtualBox) Installation:
+ ☐ download and install sublime text 3 : 
+   ☐ "dpkg --install" the file
+ ☐ install & configure GIT: apt-get install git
+   ☐ setup git
+   ☐ git config --global color.ui true
+   ☐ git config --global user.name "YOUR NAME"
+   ☐ git config --global user.email "YOUR@EMAIL.com"
+   ☐ ssh-keygen -t rsa -C "YOUR@EMAIL.com"
+   ☐ get ssh key output : cat ~/.ssh/id_rsa.pub
+   ☐ add it to github and check status with command : ssh -T git@github.com
+ ☐ follow instruction from https://gorails.com/setup/ubuntu/15.04 (or see below)
+ ☐ update ubuntu: sudo apt-get update
+ ☐ sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev
+ ☐ Install Ruby using rbenv
+   ☐ git clone git://github.com/sstephenson/rbenv.git .rbenv
+   ☐ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+   ☐ echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+   ☐ exec $SHELL
+   ☐ git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+   ☐ echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
+   ☐ exec $SHELL
+   ☐ git clone https://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash
+   ☐ rbenv install 2.2.3
+   ☐ rbenv global 2.2.3
+   ☐ ruby -v
+   ☐ echo "gem: --no-ri --no-rdoc" > ~/.gemrc
+   ☐ gem install bundler
+   ☐ Install Rails
+     ☐ sudo add-apt-repository ppa:chris-lea/node.js
+     ☐ sudo apt-get update
+     ☐ sudo apt-get install nodejs
+     ☐ gem install rails -v 4.2.4
+     ☐ rbenv rehash
+     ☐ rails -v
+   ☐ Install MySQL
+     ☐ sudo apt-get install mysql-server mysql-client libmysqlclient-dev
+   ☐ Creating a rails project
+     ☐ rails new myapp or rails new myapp -d mysql
+     ☐ rake db:create
+     ☐ run the server to test rails server (port 3000)
+
+
+
+Installing and managing postgresql:
+ ☐ Installing / reinstalling when tehre is a problem
+   ☐ sudo apt-get update && sudo apt-get upgrade
+   ☐ sudo apt-get purge postgresql*
+   ☐ sudo apt-get -f install
+   ☐ sudo apt-get install postgresql
+ ☐ gain access to psql : sudo su - postgres
+ ☐ create a user in psql command line : createuser <username>
+ ☐ 

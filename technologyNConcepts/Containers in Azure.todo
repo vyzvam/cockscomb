@@ -1,0 +1,148 @@
+Registry and first container:
+  ☐ Create rg: az group create --name ssub-acr --location 'SouthEast Asia'
+  ☐ Create registry:az acr create --resource-group ssub-acr --name 'ssubchub' --sku Premium
+  ☐ Create dockerfile:
+  ☐ Create image: az acr build --registry ssubchub --image helloacrtasks:v1
+  ☐ verify image: az acr repository list --name ssubchub --output table
+  ☐ verify image: az acr repository list --name ssubchub --output table
+  ☐ Eanble registry admin account: az acr update -n ssubchub --admin-enabled true
+  ☐ Get the credentials: az acr credential show --name ssubchub
+  ☐ Deploy container:
+    az container create
+    --resource-group ssub-acr
+    --name acr-tasks
+    --image ssubchub.azurecr.io/helloacrtasks:v1
+    --registry-login-server ssubchub.azurecr.io
+    --ip-address Public
+    --location 'Southeast Asia'
+    --registry-username ssubchub
+    --registry-password Nie8zICHmUxofn3/nwNeWHdBmID5+M7a
+  ☐ get ip: az container show --resource-group ssub-acr --name acr-tasks --query ipAddress.ip
+  ☐ open the ip in browser
+  ☐ Create replication: az acr replication create --registry ssubchub --location japaneast
+  ☐ verify replication: az acr replication list --registry ssubchub
+
+Run Docker Container in Azure Container instances:
+  ☐ az group create --name ssub-learn-aci --location eastus
+  ☐ DNS_NAME_LABEL=aci-demo-$RANDOM
+  ☐ az container create --resource-group ssub-learn-aci --name mycontainer --image microsoft/aci-helloworld --port 80 --dns-name-label $DNS_NAME_LABEL --location eastus
+  ☐ az container show --resource-group ssub-learn-aci --name mycontainer --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" --out table
+  Control restart behaviour:
+    ☐ Restart policies: Always, Never, OnFailure
+    ☐ OnFailure
+    az container create
+    --resource-group ssub-learn-aci
+    --name mycontainer-restart-demo
+    --image microsoft/aci-wordcount:latest
+    --restart-policy OnFailure
+    --location eastus
+    ☐ Check Status
+    az container show
+    --resource-group ssub-learn-aci
+    --name restartdemo
+    --query containers[0].instanceView.currentState.state
+    ☐ Check logs: az container logs --resource-group ssub-learn-aci --name restartdemo
+  Setting Environment Variables:
+    Deploy Azure Cosmos DB:
+      ☐ Create random dbname:
+         COSMOS_DB_NAME=aci-cosmos-db-$RANDOM
+      ☐ create db and get endpoint:
+        COSMOS_DB_ENDPOINT=$(
+          az cosmosdb create
+          --resource-group learn-deploy-aci-rg
+          --name $COSMOS_DB_NAME
+          --query documentEndpoint
+          --output tsv
+         )
+      ☐ Get masterkeys:
+        COSMOS_DB_MASTERKEY=$(
+          az cosmosdb keys list
+          --resource-group ssub-learn-aci
+          --name $COSMOS_DB_NAME
+          --query primaryMasterKey
+          --output tsv
+        )
+      ☐ Create container:
+        az container create
+        --resource-group ssub-learn-aci
+        --name aci-demo
+        --image microsoft/azure-vote-front:cosmosdb
+        --ip-address Public
+        --location eastus
+        --environment-variables COSMOS_DB_ENDPOINT=$COSMOS_DB_ENDPOINT COSMOS_DB_MASTERKEY=$COSMOS_DB_MASTERKEY
+      ☐ Get the Ip address and open in browser:
+        az container show
+        --resource-group ssub-learn-aci
+        --name aci-demo
+        --query ipAddress.ip
+        --output tsv
+      ☐ View env variables:
+        az container show
+        --resource-group learn-deploy-aci-rg
+        --name aci-demo
+        --query containers[0].environmentVariables
+      ☐ You can secure the variables by using the '--secure-environment-variables' when creating a container
+    Contaner with Storage account:
+      ☐ Create storage account:
+        az storage account create
+        --resource-group ssub-learn-aci
+        --name $STORAGE_ACCOUNT_NAME
+        --sku Standard_LRS
+        --location eastus
+      ☐ Get connection string:
+        export AZURE_STORAGE_CONNECTION_STRING=$(
+          az storage account show-connection-string
+          --resource-group ssub-learn-aci
+          --name $STORAGE_ACCOUNT_NAME
+          --output tsv
+        )
+      ☐ create storage share : az storage share create --name aci-share-demo
+      ☐ Get storage key:
+        STORAGE_KEY=$(
+          az storage account keys list
+          --resource-group ssub-learn-aci
+          --account-name $STORAGE_ACCOUNT_NAME
+          --query "[0].value"
+          --output tsv
+        )
+      ☐ veryify key: echo $STORAGE_KEY
+      ☐ Create container:
+        az container create
+        --resource-group ssub-learn-aci
+        --name aci-demo-files
+        --image microsoft/aci-hellofiles
+        --location eastus
+        --ports 80
+        --ip-address Public
+        --azure-file-volume-account-name $STORAGE_ACCOUNT_NAME
+        --azure-file-volume-account-key $STORAGE_KEY
+        --azure-file-volume-share-name aci-share-demo
+        --azure-file-volume-mount-path /aci/logs/
+      ☐ got to site:
+        az container show \
+        --resource-group ssub-learn-aci \
+        --name aci-demo-files \
+        --query ipAddress.ip \
+        --output tsv
+      ☐ Verify the file exist:
+        az storage file list -s aci-share-demo -o table
+        az storage file download -s aci-share-demo -p <filename>
+        cat <filename>
+    Troubleshooting:
+      ☐ Create container:
+        az container create
+        --resource-group ssub-learn-aci
+        --name mycontainer
+        --image microsoft/sample-aks-helloworld
+        --ports 80
+        --ip-address Public
+        --location eastus
+      ☐ View Logs: az container logs --resource-group ssub-learn-aci --name mycontainer
+      ☐ Access shell in container:
+        az container attach --resource-group ssub-learn-aci --name mycontainer
+        az container exec --resource-group ssub-learn-aci --name mycontainer --exec-command /bin/sh
+      ☐ Check metrics
+        CONTAINER_ID=$(az container show --resource-group ssub-learn-aci --name mycontainer --query id --output tsv)
+        az monitor metrics list --resource $CONTAINER_ID --metric CPUUsage --output table
+        az monitor metrics list --resource $CONTAINER_ID --metric MemoryUsage --output table
+

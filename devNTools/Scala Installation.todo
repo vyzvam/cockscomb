@@ -1,0 +1,10 @@
+Installing and running scala:
+ ☐ Download scala http://downloads.lightbend.com/scala/2.11.7/scala-2.11.7.msi
+ ☐ Download Eclipse IDE for scala http://downloads.typesafe.com/scalaide-pack/4.3.0-vfinal-luna-211-20151201/scala-SDK-4.3.0-vfinal-2.11-win32.win32.x86_64.zip
+ ☐ Install scala and register global env
+ ☐ Check scala installation
+ ☐ run command line sample
+ ☐ Install eclipse and register scala compiler (and required plugins or files)
+ ☐ run eclipse and create a test scala program
+ ☐ compile and run program
+ ☐ http://downloads.typesafe.com/akka/akka_2.11-2.4.2.zip?_ga=1.41560608.342554585.1456675475

@@ -1,0 +1,56 @@
+Microsoft: INF201.13x Introduction to Cloud Computing:
+ ☐ What is cloud / cloud solutions
+   ☐ Being an abstract concept that encapsulates techniques used to provide computing services from a pool of shared resources.
+   ☐ Abstracts the physical hardware and present them as virtualized resources to be used for processing, memory, storage, and networking. 
+   ☐ further layers of abstraction added to define specific services that can be provisioned and used.
+ ☐ The National Institute of Science and Technology (NIST), the official US based standards and technology definitions body, has identified five essential characteristics that are part of a cloud computing solution.
+   ☐ On-demand self-service - The ability to allocate required resources by the end user themselves as needed without involvement from the cloud service provider.
+   ☐ Broad network access Being accessible via standard network access mechanisms, without the need for any specialized infrastructure.
+   ☐ Resource pooling - The pooling of the various resources to be allocated from and returned to as needed.
+   ☐ Rapid elasticity - The ability to scale up and scale down as required, whether automatically or manually, without lead times being required.
+   ☐ Measured service - The ability to measure exactly what resources are being used, to monitor and control those services and to be able to present that data to the service provider or end user.
+ ☐ Advantages of cloud computing
+   ☐ Agility
+   ☐ Operational and management efficiency
+   ☐ Reduced cost
+ ☐ Type of cloud services
+   ☐ Types of cloud services
+     ☐ SaaS - A complete software solution
+     ☐ PaaS - Platform as a service
+     ☐ IaaS - Infrastructure as a service
+   ☐ Public cloud - owned by the service provider
+   ☐ Private cloud - it is either self-hosted private or hosted by service provider (internally designed and externally hosted)
+   ☐ Hybrid - combination of both
+     ☐ Flexibility - movement of resources from private to publich when need arises
+     ☐ Choosing management control over the services or resources
+     ☐ Security
+   ☐ Things that effect decision to choose the cloud servier
+     ☐ How much is it going to cost and will I save money?
+     ☐ Is it going to improve productivity?
+     ☐ How safe and secure is the private cloud model?
+     ☐ What is the availability and performance of the private cloud?
+     ☐ What are the service level agreements (SLAs)?
+     ☐ ompliance of data retention, for example the requirement to keep data for a certain period of time.
+     ☐ Expertise in managing the services by company resources
+ ☐ Moving to a cloud model (obstacles to consider)
+   ☐ Security - data accessibility by customers and providers
+   ☐ Compliance - rules and regulations in regards to the service and data
+   ☐ Compatability - legacy systems / infra, solve problem by gradual migration
+   ☐ Comparisons
+     ☐ Suitable for cloud-based delivery
+       ☐ Applications that have extremely high or variable scalability requirements
+       ☐ Applications or services that must be consumed on a variety of client types, often including mobile devices
+       ☐ Applications or services where users need to persist data or settings and have them synchronize between multiple client devices
+     ☐ Less suitable for cloud-based delivery
+       ☐ Applications that work with data that must remain in privately managed storage for compliance reasons
+       ☐ Applications that are predominantly used offline on a single device
+ ☐ Managing cloud infrastructure
+   ☐ Microsoft offers Operations management suite (OMS)
+   ☐ System center operations manager (SCOM)
+   ☐ Azure Stack
+ ☐ MS Azure
+   ☐ Create, deploy, and operate cloud-based applications and infrastructure services
+   ☐ Allows you to perform virtually any compute or data storage operations by provisioning and scaling the necessary resources on demand on a pay-as-you-go basis.
+ ☐ Gettings started with Azure
+   ☐ Signing Up
+     ☐ 

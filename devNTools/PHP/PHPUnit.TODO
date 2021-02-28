@@ -1,0 +1,156 @@
+
+PHPUnit:    
+ ☐ Installing PHPUnit
+    ☐ User Composer
+       composer global require 'phpunit/phpunit=3.7.*'
+    ☐ Add the bin path to the global variable
+       (mine was in "C:\Users\suba\AppData\Roaming\Composer\vendor\bin")
+    ☐ Install ansicon for color coding
+     ☐ http://adoxa.hostmyway.net/ansicon/dl.php?f=ansicon 
+     ☐ register path in environment variable
+  ☐ PHPUnit Conventions 
+     ☐ directory structure should be the same as the how the code files are structured   
+     ☐ one test class should be for one class.  
+     ☐ The test class file must suffix with "Test" keyword 
+     ☐ the class name should be the file name and must extend PHPUnit_Framework_TestCase 
+     ☐ all test methods must be public and suffix with "test" 
+  ☐ Assertions 
+    ☐ One parameter: we can specify one parameter that will need to comply to the assertion method 
+    ☐ Two parameters: 
+      ☐ we can specify a meaningful message regarding the result of the first paramenter 
+      ☐ We can also specify the second parameter as what is expected from the first paramenter (equating to the result)
+    ☐ Each assertion method also has it's couterpart of "not"
+        This is to evaluate true and false
+  ☐ Exceptions
+    ☐ The idea is to cause the code to fail because we are testing an exception
+    ☐ Include $this->fail(); at the end of try {} so that the code will fail at the end
+    ☐ Use try{} catch{} statement with throw new [exceptionClass]
+    ☐ Annotations
+      ☐ @expectedExceptions - used to enforce the test of a particular exception class being thrown
+      ☐ @expectedExceptionsMessage - used to enforce what message is included with the error
+      ☐ @expectedExceptionsCode - used to enforce what error code is included with the error
+  ☐ Errors, Warnings & Notices   
+    ☐ This test is to capture PHP errors, warnings & notices and show them as success
+    ☐ Use PHPUnit_Framework_Error in the annotation
+    ☐ There is no way to test fatal errors since they stop the execution of scripts
+  ☐ Testing Outputs
+    ☐ This is done using the output buffering
+    ☐ Use the PHPUnit_Framework_TestCase expectOutputString to do the testing 
+  ☐ Marking Incomplete & Skip
+    ☐ Can mark a test incomplete ($this->markTestIncomplete())
+    ☐ Can mark a test to be skipped ($this->markTestSkipped())
+  ☐ Fixtures 
+    ☐ setUp & tearDown 
+       These are methods (constructor and destructor), can be used to declare 
+       variables that will be used in multiple testing, but this variable is loaded 
+       everytime a test is run
+    ☐ setUpBeforeClass tearDownAfterClass (static methods) used to load the class variables only once 
+  ☐ File System
+    ☐ using vfsStream project from github (https://github.com/mikey179/vfsStream)
+    ☐ issue a composer install to load the generate autoload files
+  ☐ Stubs 
+    ☐ Are used to mimic behaviours of class objects instead of testing the results 
+    ☐ Stubs mimic classes and returns user defined values to test on predicted results 
+    ☐ It is to test behaviour of classes. 
+    ☐ Setting up & configuring a stub
+      ☐ to setup, use $this->getMock('[className]')
+      ☐ Configuration
+        ☐ ->expects : set to ->expects($this->any()), this is to tell the stub to accept any invocation
+        ☐ ->method('[methodname]'), to specify what method(s) to test
+        ☐ ->will([specified_below]), what are the return values
+          ☐ $this->returnValue('value'), returns a value
+          ☐ $this->returnSelf(), returns the stub as an object
+          ☐ $this->returnArgument(), returns the argument that is parsed into the function
+          ☐ $this->returnValueMap(array()), returns an  array with mapped value.
+          ☐ $this->returnCallBack(), returns a callback / closure that can do custom operaration on an argument
+          ☐ $this->onConsecutiveCalls(), specify the return values as the should be results of consecutive calls of the same method
+          ☐ $this->throwException(), this is to test exceptions
+          ☐ 
+          ☐ 
+          ☐ 
+    ☐ Advance Stubbing
+      ☐ getMock replaces all methods of the class specified.
+         This means these methods needs to be configured using the ->method()
+      ☐ 2nd Param: this parameter instructs the mock to replace methods specified 
+        ☐ Null: no methods should be replaced and all original methods are used 
+        ☐ Array(): method names in the array will be replaced and stub config can circumvent the methods. 
+        ☐ Those which are not specified in the array will default back to the original methods. 
+      ☐ 3rd Param: specify parameters that will be parsed into the constructor 
+      ☐ 4th Param: specify the name of the mock class 
+      ☐ 5th Param: A boolean value that instructs if the constructor of the original class should be called 
+    ☐ MockBuilder
+       Use mockbuilders to have better controll over how a stub will behave
+  ☐ Mocks 
+    ☐ Used to identify and observe expectations
+       Expectations of how many times a method should be run
+  ☐ Database 
+    ☐ Can use 'memory' to do testing without writing anything to the hdd, this could be slow 
+    ☐ Would be good to use setUp() and tearDown() so that the test database is cleaned up and the test is predictable 
+    ☐ Can use doctrine DBAL, it is an database abstraction layer 
+    ☐ Using RAM drive allow a faster testing environment 
+  ☐ Command-line test runners 
+    ☐ Log 
+      ☐ junit (xml results) 
+      ☐ tap (summary log) 
+      ☐ json (json format)
+    ☐ testdox (documentation files)
+    ☐ filter: use regex to filter which files / path to be used for test run 
+    ☐ strict: run on strict mode where it will report on skipped or incomplete tests, we can also specify if
+       tests run too long 
+  ☐ Bootstrapping & Test configuration
+    ☐ Bootstrap: a php script to configure autoloading, this can be used to autoload php files before running a test 
+    ☐ PHPUnit Configuration file: phpunit.xml / phpunit.xml.dist: this file is used to configure all the default paramenter when running tests
+      ☐ phpunit.xml will take preceedence if both configuration file exists.
+  ☐ Code coverage 
+    ☐ Detection of deadcode (results never used), unreacheable codes & oxbow Codes (not reached by controlled structures) 
+    ☐ XDebug is required
+    ☐ this can be done by calling the --coverage-[clover/html/php/text] <file/path>
+  ☐ Annotation
+    ☐ @assert: this command can specify what assertion to be done when skeleton generator is used
+    ☐ @author, @group: these annotation can identify tests with groups and / or authors
+    ☐ run phpunit --list-groups, to view summary
+    ☐ run phpunit --group "[group/author]", to run only tests associated with the groups / authors
+    ☐ @codeCoverageIgnore: this will exclude the method / class from the coverage report 
+    ☐ //codeCoverageIgnoreStart & //codeCoverageIgnoreEnd can be used for code blocks 
+    ☐ @covers <class>::<method> on a method will ignore the code block from code coverage
+    ☐ @dataProvider: This allows configuring repeating assertion to be only done once
+      ☐ @dataProvider addMapping, addMapping method can return array containing the test values
+      ☐ The method that has the annotation will map those values once
+      ☐ the assertion test will depend on the number of array elWeements.
+      ☐ @depends: can specify if a test depends on another test
+      ☐ @test: this annotation can be used to replace prepending a method name with 'test'
+  ☐ Skeleton Generator
+    ☐ phpunit-skelgen --test [classname] - generate the test script for the class
+    ☐ phpunit-skelgen --class [testClassName] - generate the class file for the test (TDD)
+  ☐ Web Services
+    ☐ We can test the response from a web service (a php script)
+    ☐ Create a web service class that emulates a web service
+    ☐ create test cases that uses the webservice class
+  ☐ Example: Developing a TDD
+    ☐ Create a project 'demo'
+      ☐ add as GIT repo
+      ☐ Autoloading
+        ☐ Create a composer.json
+        ☐ Specify autoloading parameter (with namespace: 'Enlog')
+        ☐ Run composer install
+      ☐ create the folder for the namespace 'src/Enlog  '
+      ☐ create the logger class in 'Enlog' , then git commit    
+      ☐ create index.php, require autoloading, create an instance of logger, run CLI to test index.php 
+    ☐ Configuration
+      ☐ create phpunit.xml.dist (configuration file), then git commit
+      ☐ create a bootstrap.php file within the tests folder, require the vendor/autoload.php file
+      ☐ include the bootsrap option in the configuration file
+    ☐ First Test
+      ☐ create test class for the logger class
+      ☐ create a test to check if the logger instance is correct, git commit
+    ☐ Create memory handler
+      ☐ Memory handler class
+      ☐ Memory handler interface
+      ☐ memory handler test : test intanceof interface
+    ☐ Refactor to use HandlerInterface
+      ☐ logger class's registerHandler must use HandlerInterface
+      ☐ Create a helper method to return a mock of HandlerInterface
+      ☐ user the helper method to use the mock in previous tests
+      ☐ all tests must pass (make user the namespaces are referenced properly)
+    ☐ Create a test to check how the mock mimics the HandlerInterface properly 
+    ☐ Implement the classes and see the result of handler in index.php

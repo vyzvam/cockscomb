@@ -1,0 +1,125 @@
+dotNet MVC Dev, security guide:
+ ☐ SSL (Secure socket layer)
+   ☐ Introduction
+     ☐ stablishes a secure link between the server and the browser 
+     ☐ requires a ssl certificate to be activated, which creates a public and a private keys
+     ☐ public key will be used in the (CSR) certification signing request
+     ☐ sensitive data are encrypted from browser to server
+     ☐ also provides authentication
+     ☐ protection from phising
+     ☐ Cost and performence is the disadvantage
+     ☐ 
+   ☐ Why SSL?
+   ☐ enable SSL in project properties and specify the ssl url (press F4 while the project is highlighted)
+   ☐ go to web panel in project properties (alt +enter) and specify the ssl url in server - project url
+ ☐ OAuth2 provider
+   ☐ open protocol that allows secure authorization in a simple and standard method from web, mobile, and desktop apps
+   ☐ Register global filters to add filters.Add(new System.Web.Mvc.AuthorizeAttribute());
+   ☐ Use AllowAnonymous to white-list methods out of the auth
+   ☐ specify roles on action [Authorize(Roles = "canEdit")] to restric type of operation
+ ☐ XSRF/CSRF Prevention in ASP.NET MVC and Web Pages (Cross-site request forgery)
+   ☐ How it happens
+     ☐ A response that contains auth cookie (which is a browser cookie) when a user goes to a site (possible a site that allows online transaction)
+     ☐ each request from the browser to the site will contain this cookie until the process is exited / terminated
+     ☐ user then makes an online trasaction, which is a POST request that contain monetary value
+     ☐ after a successful transaction the user visits another site that can contain a iframe with a form that mimics the transaction
+     ☐ this is done with the assumption that the auth cookie is still valid, and if it is , the transaction will be succesful
+     ☐ Using SSL will not mitigate since the exploiter can mimic the exact url of the banking site
+   ☐ The ASP.NET Web Stack Runtime uses a variant of the synchronizer token pattern to defend against XSRF attacks. 
+     ☐ 2 tokens are passed to the server, a cookie and a form value, which is then matched for verification
+ ☐ Guidelines (https://msdn.microsoft.com/en-us/library/ff648647.aspx)
+   ☐ Deployment consideration
+     ☐ review corporate / network security policies. identify constraints early
+     ☐ know the network infrastructure of target environment
+     ☐ identify fiwarll and firewall policies
+     ☐ Intranet, extranet, and Internet application scenarios each present design challenges  
+     ☐ How will you flow caller identity through multiple application tiers to back- end resources? 
+     ☐ Where will you perform authentication? 
+     ☐ Can you trust authentication at the front end and then use a trusted connection to access back-end resources?
+     ☐ Input validation
+       ☐ Assume all input is malicious.
+         ☐ This is regardless of the input source: service, file share, database
+       ☐ Centralize your approach.
+         ☐ have a shared library or module to handle input validation
+       ☐ Do not rely on client-side validation.
+       ☐ Be careful with canonicalization issues.
+       ☐ Constrain, reject, and sanitize your input.
+         ☐ Validate data for known valid types, patterns, and ranges than it is to validate data by looking for known bad characters. 
+         ☐ The range of valid data is generally a more finite set than potentially malicious input. reject known bad input and then sanitize it
+     ☐ Authentication
+       ☐ username password sent as plaintext, use SSL to mitigate this
+       ☐ How are the credential stored
+       ☐ how are they verified
+       ☐ How is the user authicated after initial logon
+       ☐ Separate public and restricted areas.
+       ☐ Use account lockout policies for end-user accounts.
+       ☐ Support password expiration periods.
+       ☐ Be able to disable accounts.
+       ☐ Do not store passwords in user stores.
+       ☐ Require strong passwords.
+       ☐ Do not send passwords over the wire in plaintext.
+       ☐ Protect authentication cookies.
+     ☐ Authorization
+       ☐ Use multiple gatekeepers.
+       ☐ Restrict user access to system-level resources.
+       ☐ Consider authorization granularity.
+     ☐ Configuration management
+       ☐ Secure your administration interfaces.
+       ☐ Secure your configuration store.
+       ☐ Maintain separate administration privileges.
+       ☐ Use least privileged process and service accounts.
+     ☐ Sensitive Data
+       ☐ Do not store secrets if you can avoid it.
+       ☐ Do not store secrets in code.
+       ☐ Do not store database connections, passwords, or keys in plaintext.
+       ☐ Avoid storing secrets in the Local Security Authority (LSA).
+       ☐ Use Data Protection API (DPAPI) for encrypting secret
+     ☐ Session Management  
+       ☐ Use SSL to protect session authentication cookies.
+       ☐ Encrypt the contents of the authentication cookies.
+       ☐ Limit session lifetime.
+       ☐ Protect session state from unauthorized access.
+     ☐ Cryptography
+       ☐ Privacy (Confidentiality). This service keeps a secret confidential.
+       ☐ Non-Repudiation (Authenticity). This service makes sure a user cannot deny sending a particular message.
+       ☐ Tamperproofing (Integrity). This service prevents data from being altered.
+       ☐ Authentication. This service confirms the identity of the sender of a message.
+       ☐ Do not develop your own cryptography.
+       ☐ Keep unencrypted data close to the algorithm.
+       ☐ Use the correct algorithm and correct key size.
+       ☐ Secure your encryption keys.
+     ☐ Parameter Manipulation
+       ☐ Encrypt sensitive cookie state.
+       ☐ Make sure that users do not bypass your checks.
+       ☐ Validate all values sent from the client.
+       ☐ Do not trust HTTP header information.
+     ☐ Exception Management
+       ☐ Do not leak information to the client.
+       ☐ Log detailed error messages.
+       ☐ Catch exceptions.
+     ☐ Auditing and Logging
+       ☐ Audit and log access across application tiers.
+       ☐ Consider identity flo bw.
+       ☐ Log key events.
+       ☐ Secure log files.
+       ☐ Back up and analyze log files regularly.
+   ☐ Summary
+     ☐ Input Validation  Do not trust input; consider centralized input validation. Do not rely on client-side validation. Be careful with canonicalization issues. Constrain, reject, and sanitize input. Validate for type, length, format, and range.
+     ☐ Authentication  Partition site by anonymous, identified, and authenticated area. Use strong passwords. Support password expiration periods and account disablement. Do not store credentials (use one-way hashes with salt). Encrypt communication channels to protect authentication tokens. Pass Forms authentication cookies only over HTTPS connections.
+     ☐ Authorization  Use least privileged accounts. Consider authorization granularity. Enforce separation of privileges. Restrict user access to system-level resources.
+     ☐ Configuration Management  Use least privileged process and service accounts. Do not store credentials in plaintext. Use strong authentication and authorization on administration interfaces. Do not use the LSA. Secure the communication channel for remote administration. Avoid storing sensitive data in the Web space.
+     ☐ Sensitive Data  Avoid storing secrets. Encrypt sensitive data over the wire. Secure the communication channel. Provide strong access controls on sensitive data stores. Do not store sensitive data in persistent cookies. Do not pass sensitive data using the HTTP-GET protocol.
+     ☐ Session Management  Limit the session lifetime. Secure the channel. Encrypt the contents of authentication cookies. Protect session state from unauthorized access.
+     ☐ Cryptography  Do not develop your own. Use tried and tested platform features. Keep unencrypted data close to the algorithm. Use the right algorithm and key size. Avoid key management (use DPAPI). Cycle your keys periodically. Store keys in a restricted location.
+     ☐ Parameter Manipulation  Encrypt sensitive cookie state. Do not trust fields that the client can manipulate (query strings, form fields, cookies, or HTTP headers). Validate all values sent from the client.
+     ☐ Exception Management  Use structured exception handling. Do not reveal sensitive application implementation details. Do not log private data such as passwords. Consider a centralized exception management framework.
+     ☐ Auditing and Logging  Identify malicious behavior. Know what good traffic looks like. Audit and log activity through all of the application tiers. Secure access to log files. Back up and regularly analyze log files.
+
+
+
+Application security, :
+ ☐ top application risks
+   ☐ Cross site scripting
+   ☐ sql injections
+   ☐ access control
+ ☐ 

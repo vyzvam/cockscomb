@@ -1,0 +1,70 @@
+C# TDD Using NUnit:
+ ☐ Install NUnit from NuGet
+ ☐ Install the NUnit3 Adapter from Extensions and updates
+ ☐ Use NUnit.Framework namespace in test project
+ ☐ Setting up test code
+   ☐ TestFixture attribute - used on test class
+   ☐ Test attribute - used on methods that performs the test
+   ☐ TestCase(x, y, z...) attribute pass in the params of the test function
+   ☐ Setup attribute acts like a constructor to use class members througout the tests
+ ☐ Doing Assertions
+   ☐ AreEqual & AreNotEqual: compare two values
+   ☐ IsTrue & IsFalse: boolean result
+   ☐ Contains : needle in a haystack
+   ☐ That : (result, Is.EqualTo(expected))
+   ☐ That : (result, Is.False))
+   ☐ That : (result, Has.Member(actual))
+ ☐ Exception Test, there are 3 ways to do this
+   ☐ Assert.Throws<NullReferenceException>(delegate{ theClass.theMethod(var1, var2); })
+   ☐ ExpectedException attribute, e.g [ExpectedException(ExpectedException = typeof(DivideByZeroException))]
+   ☐ Assert.That(delegate{ theClass.theMethod(var1, var2); }, Throws.Exception.TypeOf<DividedByZeroException()>)
+ ☐ NUnit in action: Shopping cart project
+   ☐ Requirement (Shopping cart)
+     ☐ can contain 0 or more items
+     ☐ each item has quantity, description, unit price & item price (quantity * unit price)
+     ☐ cart total = sum of items' price
+     ☐ quantity is modifiable
+     ☐ discount can be applied on an item
+     ☐ item price cannot be less than zero in any condition
+   ☐ Unit test
+     ☐ create a test project (append Tests)
+     ☐ install nunit from nuget
+     ☐ create the test class
+     ☐ add a test method to check quantity value
+       ☐ instantiate the class
+       ☐ check data member with a value
+       ☐ Test will compile fail
+       ☐ create the actual class
+       ☐ add the Quantity data member, only getter
+     ☐ add a test method to check description value
+       ☐ instantiate the class
+       ☐ assert data member with a value
+       ☐ Test will compile fail
+       ☐ add the description data member, only getter
+     ☐ Refactor
+       ☐ reduce repeated code
+       ☐ create a class private member (quantity and descriptino)
+       ☐ create a setup method that intantiates the cartitem class
+     ☐ add a test method to check unit price value
+       ☐ instantiate the class
+       ☐ assert data member with a value
+       ☐ Test will compile fail
+       ☐ add the unit price data member, only getter
+     ☐ add a test method to check item price
+       ☐ call the noneexisted method that will return the item price value
+       ☐ test fail
+       ☐ create a method to the class to have the item price logic
+       ☐ assert returnd value
+       ☐ Test will compile fail
+       ☐ add the unit price data member, only getter
+
+
+ Package Manager Console:
+  ☐ get-help
+    ☐ Get-Package
+    ☐ Install-Package
+    ☐ Uninstall-Package 
+    ☐ example get-help get-package: explains how to use the get-package 
+    ☐ Get-Package -ListAvailable -Filter nunit 
+    ☐ Uninstall-Package elmah -RemoveDependencies 
+  ☐ 

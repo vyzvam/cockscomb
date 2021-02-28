@@ -1,0 +1,82 @@
+Tuts+, Learning C# in 30 Days:
+ ☐ IDE & It's environment
+   ☐ running a console app with ctrl+f5 will wait for a keypress to close the console window
+   ☐ Show line numbers: Tools->options->All languages-> Display Line numbers
+ ☐ Control structures
+   ☐ Short circuits : The first condition meets the condition block and does not require the other conditions
+ ☐ Shortcuts
+   ☐ Ctrl+k,c & Ctrl+k,u (comment & uncomment )
+   ☐ 
+ ☐ Variables
+   ☐ Use decimal for numerical accuracy
+   ☐ Verbatum string : prepend '@' before the string 
+      The string appears as is, the doublequotes / quotes appear twice though
+   ☐ Objects are different from variables
+     ☐ variables store values but objects stores the reference to the values
+     ☐ assigning a value of one variable to another variable does not effect the assignor
+     ☐ assigning an object to another object effect both the assignor and assignee, both references to the same value
+   ☐ variables can be made with the "?"
+     ☐ int x = null, is invalid 
+     ☐ int? x = null is valid 
+   ☐ var : this keyword can be used to replace declaration
+     ☐ var names = new Dictionary<string, string>()
+ ☐ Namespaces & Classes
+   ☐ we can add namespaces by appending to the existing namespace specified
+   ☐ namespace MyNameSpace.MyInnerNamespace
+   ☐ we can use the using statement within namespace block
+   ☐ namespaces can be organized by creating folders to segregate our code files
+   ☐ by default classes are internal, an access modifier "internal class MyClass{}"
+     ☐ Which means the class is only accesible by codes within the project namespace
+     ☐ it will not be available if it is imported to other projects
+   ☐ by default all variables, methods or classes are private unless specified
+   ☐ Properties getters & Setters
+     ☐ example: public FirstName {get; private set; }
+   ☐ Method Overloading: method with same return type and name but different parameter(s)
+   ☐ Constructor overloading
+     ☐ constructors can be overloaded, and constructors can call other constructors
+       ☐ public Person(string firstName)
+       ☐ public Person(string firstName, string lastName) : this(firstName)
+   ☐ Optional parameters
+   ☐ Inheritence
+     ☐ Override : overrides the parent(s) methods
+       ☐ public override string ToString() { #codeblock }
+     ☐ parent methods can be called using 'base' keyword
+     ☐ constructor overload: child class can overload parent constructor  
+       ☐ public Employee(string firstName, string lastName) : base(firstName, lastName)
+   ☐ Abstract class
+     ☐ abstract member : abstract member of the parent class must be implement in the child class
+     ☐ 
+   ☐ Static Members & Classes
+     ☐ Extension methods : an object which is a parameter in a static method can use that method as if it its own
+       ☐ example: public static bool IsCircle (this Shape shape) { return shape.sides == 0}
+       ☐ example: shape.IsCircle()
+ ☐ Functions & Lambdas
+   ☐ Func: a way to declare a delegate
+   ☐ Predicate: another way to declare a delegate
+ ☐ Structs & Memory management
+   ☐ structures are similar to classes, but only that structs stores values just like primitive data types
+   ☐ Memory
+     ☐ Stack: values types, fast memory, fixed size
+     ☐ Heap: reference types, slow memory, dynamic size
+ ☐ Snippets
+   ☐ prop: creates a property, public string firstName {get; set;}
+   ☐ propg: creates a read-only property, public string firstName {get; set;}
+   ☐ ctor & ~ : creates constructor / destructor
+   ☐ cw : calls Console.WriteLine()
+   ☐ mbox : calls messabeBox.show()
+   ☐ for, do, while , if, else, : creates the required control functions 
+   ☐ #region : creates a region, used in order to have cleaner code fragments
+   ☐ 
+
+Tuts+ C# 201: 
+ ☐ Use resharper (30 days trial) & N Crunch (free)
+  ☐ Operator overloading for user-defined objects
+   ☐ can overload operator by creating method public static <className> operator + ([paramters])
+   ☐ applicable for all operators (+, -, *, /)
+   ☐ equality operator
+     ☐ public static bool operator == ([parameters]), 
+     ☐ must do both the equality and inequality
+     ☐ best practice to override the equals operator with any object parameter
+     ☐ best practice to create the equals operator with the relevant object type
+     ☐ best practice to override the GetHashCode
+ ☐ Implicit & Explicit Conversion

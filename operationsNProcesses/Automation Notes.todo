@@ -1,0 +1,58 @@
+General:
+ ☐ Code versioning
+ ☐ Building solution / solutions or project / projects
+ ☐ Automating unit tests
+ ☐ Spin up environment
+ ☐ Deploy application (dev, staging & production)
+
+
+
+TP Solutions building and publishing automation:
+ ☐ Objective 1#: deploying TradingPostWeb to a local deployment
+   ☐ Building the Shared components solution - Clean & Rebuild
+   ☐ Building the SSO solution - Clean & Rebuild
+   ☐ Building the TradingPostWeb solution (individual projects)
+     ☐ Building the TP.Entity Project
+     ☐ Building the TP.Library Project
+     ☐ Building the TP.WebAPI Project
+     ☐ Building the TradingPostWeb Project
+     ☐ Publishing the TradingPostWeb Project
+     ☐ Copying the intended web.config & nlog.config
+ ☐ Objective 2#: deploying adsplacement api to a local deployment
+   ☐ Building the Shared components solution - Clean & Rebuild
+   ☐ Building the SSO solution - Clean & Rebuild
+   ☐ Building the AdPlacement solution
+   ☐ Publish Easylist.Data.API.Rest
+   ☐ Copying the intended web.config & nlog.config
+
+VS Command line workflow:
+ ☐ 
+ ☐ 
+
+
+ Jenkins:
+  ☐ Install JDK
+  ☐ Install Jenkins (bitnami)
+  ☐ Install Git Plugin (if not already) in Jenkins in Manage Jenkins
+  ☐ Install MSBuild (if not already) in Jenkins in Manage Jenkins
+  ☐ Restart Jenkins
+  ☐ Install Nuget (using chocolatey : >> cinst Nuget.CommandLine)
+  ☐ Provide git exe in full file name
+  ☐ Provide MSBuild path
+  ☐ Create a new freestyle job
+  ☐ specify the git profile, specify build order, specify nuget update
+
+    
+
+
+
+Chocolatey:
+ ☐ install
+   ☐ Win Powershell
+   ☐ Set-ExecutionPolicy RemoteSigned (if not already)
+   ☐ iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
+
+
+References:
+ ☐ https://codealoc.wordpress.com/2012/05/27/deploying-a-net-web-application-to-iis-with-powershell/
+ ☐ https://blog.couchbase.com/2016/january/continuous-deployment-with-jenkins-and-.net

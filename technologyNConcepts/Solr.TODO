@@ -1,0 +1,43 @@
+Index & Full Text Searching Plan:
+ ☐ Read about Solr
+ ☐ Find out how to install
+ ☐ Install
+ ☐ Test Indexing
+ ☐ Test Searching
+ ☐ Test different source (different pc)
+ ☐ Learn c# api for solr
+ ☐ Do searching
+ ☐ View result
+ ☐ Stream file to browser
+
+
+
+
+ Solr Install:
+  ☐ Java JRE
+    ☐ requires Java Runtime Environment (JRE) version 1.7 or higher
+    ☐ Download and install the 64bit Java (JVM) from https://www.java.com/en/download/manual.jsp
+  ☐ Solr Installation
+    ☐ Install and usage guides
+      ☐ https://cwiki.apache.org/confluence/display/solr/Installing+Solr
+      ☐ https://cwiki.apache.org/confluence/display/solr/Running+Solr
+      ☐ http://lucene.apache.org/solr/quickstart.html
+    ☐ download solr from http://lucene.apache.org/solr/ or http://www.eu.apache.org/dist/lucene/solr/5.3.1/
+    ☐ downlaod the zip file (136mb) and extract it to a folder
+    ☐ copy the solr5.3.1 to c:\ and rename to solr (optional)
+  ☐ Running Solr
+    ☐ start solr by typing bin\solr.cmd start
+    ☐ access the solr admin at localhost:8983
+    ☐ Stoping solr and reset environment: bin/solr stop -all ; rm -Rf example/cloud/
+  ☐ Indexing
+      ☐ create a core from the command line : bin\solr create-c <name>
+    ☐ for indexing can use the SimplePostTool (help): java -jar example\exampledocs\post.jr -h
+    ☐ for indexing can use the SimplePostTool (index): java -Dc=testing -jar example\exampledocs\post.jr example\exampledocs\*.xml
+    ☐ indexing rich files: java -Dc=demo -Dauto=yes -Ddata-files -Drecursive-yes -classpath dist\solr-core-5.2.1.jar -jar example\exampledocs\post.jar docs\
+  ☐ C# API
+    ☐ https://github.com/mausch/SolrNet
+    ☐ Review the sample app
+    ☐ Example, a mvc 4 app
+    ☐ Install SolrNet v0.4.0.4001
+    ☐ Create a model to map the Solr document to a class
+

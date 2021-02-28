@@ -1,0 +1,26 @@
+Docker Installation (for windows 10 64b):
+☐ Images
+  ☐ Union file system : layerd file system changes
+  ☐ Running docker
+    ☐ tagging : docker image tag nginx vyzvam/nginx
+    ☐ tagging : docker image push nginx vyzvam/nginx
+    ☐ tagging : docker image tag vyzvam/nginx vyzvam/nginx:testing
+  ☐ Dockerfile
+    ☐ Rules
+      ☐ Specify from
+      ☐ chain commands so that it is in a single layer (adding repo, etc_)
+      ☐ run the logging to stdout and stderr since it will be handled by docker
+      ☐ specy ports to be exposed
+      ☐ final command "cmd" for what to do when the container is launched
+      ☐ the order of the instructions should be from the least changes to most changes, so that building dockerfile will be faster
+    ☐ building new : docker image build -t subanginx .
+    ☐ Building, extending from image 
+      ☐ specify image in FROM : will inherit stanzas from image (don't have to specify cmd at the end)
+      ☐ ENV is not inheritted from upstream image
+      ☐ copy files (when required)
+      ☐ build the image, docker image build -t subanginx .
+      ☐ push if required, docker image push subanginx:latest vyzvam/subanginx:latest
+    ☐ workflow #1
+      ☐ dockerize node.js app, build, test, push, rm and run
+      ☐ alpine of node 6.x image
+      ☐ expect result in localhost:8080

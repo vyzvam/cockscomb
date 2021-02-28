@@ -1,0 +1,32 @@
+Big Data Week KL:
+ ☐ Open data from gov available at data.gov.my
+ ☐ Checkout tramdas.wordpress.com
+ ☐ Natural language processing using accelarated processing using GPU, behaviour and emotion analysis
+ Hadoop:
+   ☐ Presented by Abyress Sdn .Bhd.
+   ☐ Data collection of - Sentiments, clickstream, sensors, geopgraphic
+   ☐ HDFS
+   ☐ Sqoop - loads RDBMS data
+   ☐ Flume - stream data into HDFS
+   ☐ Kafka - loads heavy load data from sites like twitter
+   ☐ Pig - Enalbe programs on top of Hadoop
+   ☐ Hive , Storm
+   ☐ Spaks - stream process of data
+   ☐ HBase, Cassandra - NoSQL
+   ☐ Phoenix - SQL Layer on top of Hadoop
+   ☐ Oozie - workflow scheduling
+   ☐ Ranger - Security policy
+   ☐ Lambda Architecture.net
+   ☐ Open data pathway
+   ☐ Apache Solar is for full-text search (comes with Hadoop)
+   ☐ 
+ Consuming data:
+   ☐ Data cleansing, for example jalan, jln means the same thing
+   ☐ Data Harmonization, for example different words or phrases that means the same
+   ☐ Data anomization, encryption to protect senstive data
+   ☐ Machine learning
+   ☐ Data visualization
+ Data Harvesting (MIMOS):
+   ☐ Mi Clip to clip search profile and results are collected and categorized
+     ☐ It does data cleansing
+   ☐ Mi Intelligence

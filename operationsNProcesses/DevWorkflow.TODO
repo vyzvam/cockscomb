@@ -1,0 +1,19 @@
+Development Workflow, Tools & Configs:
+ ☐ Summary
+   Here i can find a list of tools & its' plugins and configurations. 
+ ☐ Editors
+   ☐ Sublime Text 3
+   ☐ Visual Studio 2015
+     ☐ Resharper (productivity)
+     ☐ NUnit / for Testing
+ ☐ Dev Tools
+ ☐ Git Bash
+   ☐ .bashrc
+ ☐ Jasmine for javascript testing
+ ☐ Fiddler for web debugging proxy
+ ☐ Postman for Http Endpoint request response
+   ☐ Config Json
+ ☐ Utilities & Management
+ ☐ ConsoleZ (Cmd prompt, Git Bash, powershell)
+   ☐ xml config
+ 

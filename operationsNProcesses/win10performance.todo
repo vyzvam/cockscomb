@@ -1,0 +1,29 @@
+Tweaking windows 10 for speed:
+ ☐ Power options
+   ☐ search 'power options' from start menu
+   ☐ Use High performance under choose or customize a power plan.
+ ☐ Disable unwanted startup programs
+   ☐ Goto taskmanager, select startup
+ ☐ Defrag and optimize drive
+   ☐ Search 'defrag' from start menu
+   ☐ Select drive and choose optimize
+ ☐ Delete temp files
+   ☐ Go to run, type %temp%, clear the folder contents
+   ☐ Go to run, type temp, clear the folder contents
+   ☐ Go to run, type prefetch, clear the folder contents
+ ☐ Memory cleanup
+   ☐ right click c drive, choose properties,
+   ☐ click disk cleanup, click clean system file
+ ☐ Reduce runtime service
+   ☐ Run, msconfig
+   ☐ go to services tab, hide all ms services.
+
+ ☐ Run, regedit,
+   ☐ HK_CURRENT_USER/Control Panel/Mouse -> mouse hover time to 10
+   ☐ HK_CURRENT_USER/Control Panel/Desktop -> Menushowdelay to 10
+ ☐ Visual effects
+   ☐ search 'system' -> advance system settings -> performance
+
+
+
+

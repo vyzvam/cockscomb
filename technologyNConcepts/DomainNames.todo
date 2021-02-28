@@ -1,0 +1,15 @@
+Domain Name Service:
+ ☐ Translates IP Addresses to user understandable text
+ ☐ Ends with a "." which is the root of the internet namespace
+ ☐ Browser / OS will first determine if the know the ip address (configured or cached locally)
+ ☐ if not OS queries the Resolving name server (workhorse of a dns lookup)
+ ☐ Resolving name server (ReNS) job is to find the root name servers (RoNS).
+ ☐ RoNS will asked to check with the Top level domain (TLD) name server
+ ☐ ReNS caches and  queries a tld name server (eg "com")
+ ☐ TLDNS will asked to check with the Autoritative name servers (ANS)
+ ☐ TLDNS will know where to check for the ANS with the help of the Domain's Registrar.
+   ☐ when a domain is bought Domain's Registrar will know which ANS to use. 
+   ☐ will asks the organization responsible for the top level domain (the Registry) to update TLDNS
+ ☐ ReNS caches and queries a ANS (eg "abc.com")
+ ☐ ANS will provide the IP addres to use for the browser.
+ ☐ ReNS gives the details to OS and OS to Browser.

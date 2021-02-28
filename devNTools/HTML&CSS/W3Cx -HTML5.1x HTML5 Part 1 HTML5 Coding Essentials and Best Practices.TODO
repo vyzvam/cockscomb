@@ -1,0 +1,13 @@
+W3Cx: HTML5.1x HTML5 Part 1: HTML5 Coding Essentials and Best Practices:
+ ☐ w3c tools at http://www.w3.org/developers/tools
+ ☐ Accesibility and internationalization are important (l18n, l10n)
+ ☐ Always choose utf8 encoding
+ ☐ Character encoding
+   ☐ Words and sentences in text are created from characters. 
+   ☐ Characters are grouped into a character set (also called a repertoire). 
+   ☐ This is then called a coded character set when each character is assigned a particular number, called a code point. 
+   ☐ These code points will be represented in the computer by one or more bytes.
+ ☐ HTML5 structural elements
+   ☐ <header>, <footer>, <nav>, <article>, <section> , <time>, <aside>, <figure> and <figcaption> ,<main>
+ ☐ Other elements and attributes
+   ☐ 

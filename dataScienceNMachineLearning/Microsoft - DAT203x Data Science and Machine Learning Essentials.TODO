@@ -1,0 +1,86 @@
+Microsoft: DAT203x Data Science and Machine Learning Essentials:
+ ☐ Data Science is 
+   ☐ the exploration and quantitative analysis 
+   ☐ of all available structured and unstructured data 
+   ☐ to develop understanding, extract knowledge, and formulate actionable results.
+   ☐ Data to Action to Decision
+     ☐ 1st phase: what happened? storing events
+     ☐ 2nd phase: Why it happened? analysis
+     ☐ 3rd phase: What will happen? predictive
+     ☐ 4th pahse: what should i do? prescriptive analytics, which leads to decision automation and support
+   ☐ Data science involves
+     ☐ finding data
+     ☐ Acquiring data
+     ☐ cleaning and transforming
+     ☐ understanding relationship in data
+     ☐ delivering value from data
+ ☐ Data science process (example: knowledge discovery process : predicting power failures in Manhattan)
+   ☐ Opportunity assesment & business understanding
+     ☐ What is the objective? 
+     ☐ what is the problem ? 
+     ☐ what is to be solved? 
+     ☐ what are the constraints? 
+     ☐ what are the risks? 
+     ☐ how to evaluate the result quality ? (IMPORTANT!!)
+   ☐ data understanding & data acquisition
+     ☐ free text documents typed by dispachers on electrical problems
+     ☐ records of info on manholes and underground cables
+     ☐ electrical shock info table
+     ☐ extra info on serious events
+     ☐ inspection reports
+     ☐ 
+   ☐ data cleaning and transformation
+     ☐ free text to structured
+     ☐ trouble ticket to vector like
+     ☐ integrate tables unique identifiers (manholes and cable relationship)
+   ☐ model bulding
+     ☐ classical? regression? clustering? recommendor systems?
+   ☐ policy construction
+     ☐ based on model what is prescribed to change the policy
+   ☐ Evalutiona, residuals and metrics
+     ☐ measing the quality of the result
+     ☐ 
+   ☐ model deploymen t, monitoring and updates
+   ☐ data science process involves
+     ☐ Data selection.
+     ☐ Preprocessing.
+     ☐ Transformation.
+     ☐ Data Mining.
+     ☐ Interpretation and evaluation.
+ ☐ Intro to machine learning
+   ☐ Solutions include
+     ☐ Classification: Predicting a Boolean true/false value for an entity with a given set of features.
+       ☐ has a training set of images with labels and a test set without the label
+       ☐ both sets will have very different images
+       ☐ the identifying of the boolean result of the training set should allow the predective ability to get boolean result of the test set
+       ☐ images can be noisy (wrong label) but with enough data the classification should be ok
+       ☐ Each observation is represented by a set of numbers called features
+       ☐ these numbers represented in vectors
+     ☐ Regression - Predicting a real numeric value for an entity with a given set of features.
+     ☐ Statistical Learning Theory for supervised learning
+       ☐ The best models are simple models that fit the data well. 
+       ☐ Choose the options that has the fewest assumptions
+       ☐ require balance between accuracy and simplicity
+     ☐ Clustering - Grouping entities with similar features.
+       ☐ They are much harder to evaluate
+       ☐ it is an unsupervised problem
+     ☐ recommendation - Recommending an item to a user based on past behaviour or preferences of similar users.
+       ☐ This is a supervised problem
+   ☐ Classification & regression use data with known values to train a machine learning model so that it can identify unknown values for other data entities with similar attributes. 
+   ☐ 
+   ☐ Classification is used to identify Boolean (True/False) values. Regression is used to identify real numeric values. So a question like "In this a chair?" is a classification problem, while "How much does this person earn?" is a regression problem.
+   ☐ Both classification and regression are examples of supervised learning, in which a machine learning model is trained using a set of existing, known data values
+   ☐ 
+ ☐ Regression, in Detail
+   ☐ Simple liniear regression
+     ☐ 
+ ☐ Using MS Azure Machine Learning
+   ☐ Installing R from https://cran.r-project.org/bin/ (https://cran.r-project.org/bin/windows/base/R-3.2.2-win.exe)
+   ☐ Installing R Studio: ( https://www.rstudio.com/products/rstudio/download/ ) https://download1.rstudio.org/RStudio-0.99.486.exe
+ ☐ Review
+   ☐ What type of machine learning technique to predict emergency room wait times, based onthe day of the week, the staffing information at the hospital, the symptoms of the patient, and other factors. The answer is regression
+   ☐ What is the terms used to describe the field containing the wait time? It is "Label"
+   ☐ What type of machine learning technique required to build a detector for credit card fraud that predicts False for all legitimate accounts, and True when an account is subject to a potentially fraudulent transaction. It is Classification
+   ☐ 
+☐ 
+

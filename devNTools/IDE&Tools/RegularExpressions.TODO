@@ -1,0 +1,97 @@
+Regular Expressions:
+ ☐ For testing, go to : http://gskinner.com/RegExr/
+ ☐ Flags : these are used after the escape sequence of a reqular expression (/regularexpression/)
+   ☐ "g" : Global
+   ☐ "m" : Multiline
+   ☐ "dotall" : 
+   ☐ "i" : IgnoreCase
+   ☐ "x" : Extended (allow comments in regular expressions)
+ ☐ Functioning regular expressions
+   ☐ The standard search that we do example 'hello' is a functioning regular expression
+   ☐ the search is basically doing a search of h followed by e followed by l and so on
+ ☐ Basic Symbols
+   ☐ "." : matches any character except for linebreaks 
+   ☐ "\" : a literal, matches exactly the character specified, "\." will search for "." instead of the any character match
+   ☐ "?" : preceeding character is optional, e.g "H?", "H" here is an optional character in the search
+   ☐ "()" : Parentheses to wrap sequence of characters, which also used for captured values
+   ☐ "[]" : character classes, matches any single character in the brackets
+   ☐ "+" : A greedy matcher, matches any number of the preceeding character, eg. "g+" will match any number of 'g'
+   ☐ "*" : matches zero or more of the preceeding character
+   ☐ "|" : alternating symbol or the 'pipe' is a OR operator, 
+   ☐ Example:
+     (ht|f)tps?://.+ will match the below
+     http://net.tutsplus.com
+     https://net.tutsplus.com
+     ftp://net.tutsplus.com
+ ☐ Carets & dollars
+   ☐ "^" : Starts a string with a trailing character "^H"
+   ☐ "[^]" : negates character range in the character class
+   ☐ "$" : Ends a string with a preceding character "H$"
+   ☐ Example:
+     .+\.(png|jpg|gif)$ will only match the first 3 strings
+     myfile.png
+     photo.jpg
+     hello.gif
+     mygif
+ ☐ Capturing values 
+   ☐ "$[1-x]": the dollar sign trailing with a number will capture the result of expresion 
+   ☐ The result depends on the "()" usage
+   ☐ the number identifies which expression to be expression in the order of outside in. 
+ ☐ Greedy matching
+   ☐ The "+" sign will match untill it is told specifically where to stop
+   ☐ example ".+H" will match all characters till the last occurance of the H
+   ☐ example ".+?H" will match all characters till the first occurance of the H since the "?" act as the instruction
+ ☐ Ranges & Curly brace matches 
+   ☐ "\r" : matches carriage return 
+   ☐ "\n" : matches new line 
+   ☐ "\s" : matches space / tab characters 
+   ☐ "\w" : matches word characters 
+   ☐ "\d" : matches digits 0-9 
+   ☐ "[a-zA-Z]" : matches range of characters of alphabets (lowercase and uppercase) 
+   ☐ Range specifier specifies total characters, minimum and maximum to be included in the search 
+     ☐ "{2}" : match 2 occurences of the character in effect  
+     ☐ "{2,5}" : match minimum of 2 and maximum of 5 occurences of the character in effect  
+     ☐ "{2,}" : match minimum of 2 and above occurences of the character in effect  
+ ☐ lookbehinds, lookaheads
+   ☐ These are used to aplly to search criteria but not include as captured values
+   ☐ negative lookbehind "?<!" : must be in parentheses
+     ☐ Example : (?<!: ) will return values that does not have ': ' that precedes them
+   ☐ positive lookbehind "?<=" : must be in parentheses
+     ☐ Example : (?<=: ) will return values that has ': ' that precedes them
+   ☐ negative lookaheads "?!" : must be in parentheses
+     ☐ Example : (?!: ) will return values that does not have ': ' that trails them
+   ☐ positive lookaheads "?=" : must be in parentheses
+     ☐ Example :(?=\.[a-z]{2,4}) will return values that has a punctuation followed by alphabets of 2 to 4 characters long
+ ☐ Non-capturing groups 
+   ☐"?:" : applying this in a parantheses will not include as captured value 
+ ☐ Back-referencing 
+   ☐ "\[1-x]": the forward slash trailing with a number will reference the result of specified expresion 
+ ☐ PHP, use the preg family of methods to manipulate the regular expression usage
+ ☐ PHP, can search & replace arrays of matches with preg_replace using array_keys & array_values functions
+ ☐ Examples
+   ☐ #1 : Markdown example
+     ## This is a Heading Two Tag
+     > My quotation goes here
+         var joe = 'plumber';         
+     ☐ line 1: 
+       ☐ Search : /^## (.+)/gm 
+       ☐ Replace : <h2>$1</h2> 
+     ☐ line 2: 
+       ☐ Search : /^>\s(.+)\r/gsm 
+       ☐ Replace : <blockquote><p>$1</p></blockquote> 
+     ☐ line 3: 
+       ☐ Search : / {4}(.+)(?:\r|$)/gm 
+       ☐ Replace : <pre>$1</pre> 
+   ☐ #2 : stripping an url of an anchor tag <a href="www.google.com">Google</a>
+     ☐ href=["'](^['"]+)["']
+     ☐ or with backreference : href=["'](^['"]+)[\1]
+   ☐ #3 : Matching US Phone number : 615-555-1212
+     ☐ [1-9]{3}-[1-9]{3}-[1-9]{4}
+     ☐ (\d{3})-(\d{3})-(\d{4})
+     ☐ \(?(\d{3})\)?-?(\d{3})-?(\d{4}) : to cover other variations such as 6155551212 or (615)555-1212
+     ☐ PHP In PHP the result of a preg_match will be in arrays (4 items in this example)
+     ☐ We can also return them as name associative arrays
+       ☐ preg_match('/(?P<area>\d{3})-(\d{3})-(\d{4})/', $phone, $matchedArr);
+   ☐ #4 : Verifying email addresses /^[\w\d]+@\.\w{2,4}/gim
+ ☐ Conditional expression : similar to a ternary operator (?(condition)then|else)
+ 

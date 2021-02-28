@@ -1,0 +1,250 @@
+Concepts in Games Development (GameDev):
+ ☐ General, what is covered
+   ☐ Essential game design elements and the role of a game designer
+   ☐ Key game development stages and principles of agile game development
+   ☐ How games are like magic and real-time systems
+   ☐ That programming is made up of simple steps, and how procedure and object oriented programming can help us structure our game code
+   ☐ How messages and events are key concepts in games at different levels within game architecture
+   ☐ About graphs and other data structures that help represent game worlds and characters
+   ☐ How a game design can be described, modelled and implemented as simple game architecture
+   ☐ About the emergence of game engines and the relationship of games to other data-driven applications, including concurrent and distributed architectures
+   ☐ How to implement games using iterative step-by-step processes, by selecting, implementing and testing
+   ☐ That rules are central to games, and that game balance relates to fairness and bias for players
+   ☐ How physics can be used to create realistic force-based movement, for individual characters and groups
+   ☐ About AI techniques that can add interesting behaviour to game characters, including decision making, action planning and path planning
+ ☐ I'ts all about the game
+   ☐ A game design is the act of deciding what a game should be.
+   ☐ A game design is a continuous process that involved all the team members /contributors
+   ☐ There can be many game designers (those who contribute to the design of the game)
+   ☐ start small and simple and make that mistake and let the game design evolve
+   ☐ Six key elements of a game design
+     ☐ Basic idea (summary about the game)
+     ☐ Story line
+     ☐ Visual Design
+     ☐ Audio Design (design in layers,)
+     ☐ Control
+     ☐ Interaction
+   ☐ Game flow & Screens
+     ☐ general screen designs and their flow
+   ☐ Rules of the game
+     ☐ Descriptive rules - defines the property of elements
+     ☐ Definitive rules - define the activity or process, or define end point
+     ☐ make sure the players, knows the rules
+   ☐ Entites, states & interactions
+     ☐ objects in the game (characters, tree's and obstacles)
+     ☐ how the character interact with obstacle to proceed with the game
+     ☐ draw an interaction matrix, and define what what happens in each box 
+   ☐ Game development stages
+     ☐ Preproduction
+       ☐ testing and experiments
+     ☐ Production
+       ☐ converting the prototype to a fully functional product / service
+     ☐ Release
+       ☐ comunity engagement
+       ☐ releasing patches
+     ☐ Developing the agile way
+       ☐ Iterative and continuous
+   ☐ Assesment
+     ☐ The process of game design is it is an iterative non-linear activity.
+     ☐ The purpose of an entity interaction matrix is to clearly represent the entities of the game and how they interact with each other.  
+     ☐ Larger companies often use a three-step development process to create games. Which are Design, production and patching.  
+     ☐ The purpose of a game design document is a clear description of the design to share with the development team.  
+     ☐ Agile software development process for game development is an adaptive process using small iterations of activity, good communication and a focus on delivering working games at each step.
+ ☐ Making it happen
+   ☐ From design to code
+     ☐ Setting up the imaginary world
+       ☐ the world, environment, scenary, objects, characters
+       ☐ identify the player(s)
+       ☐ the game app that interacts with the player(s) and the imaginary world
+   ☐ The game loop
+     ☐ input acquisition
+     ☐ signal / data processing (model updates)
+     ☐ the output or result (Actuating, presenting, rendering)
+     ☐ These are from real time system / user input / existing configuration
+     ☐ Input types
+       ☐ player input (keyboard, mouse)
+       ☐ network (other players)
+       ☐ NPC, AI, Agents, Bots (computer controlled)
+     ☐ Update / Process
+       ☐ processing the input
+       ☐ validate against the other elements in the game
+     ☐ Rendering
+       ☐ put the layers from back to front
+       ☐ consider speed, details and interaction
+   ☐ Programming is... Statements, sequences and selection
+   ☐ Keeping code organized Objecti Oriented Paradigm
+   ☐ Modularity, Composition & encapsulation
+   ☐ Messages and data driven games
+   ☐ Life of Graph, the mathematical idea
+     ☐ connecting nodes 
+     ☐ threes, have multiple connected nodes
+     ☐ multiple states, linked by trigger to identify behaviour of a game element
+     ☐ navigation graphs
+     ☐ dependancy graphs
+     ☐ Stacks and queues can be very usefull in a games
+   ☐ Simple game architecture (tic tac toe)
+     ☐ A grid that has 9 different nodes
+     ☐ players (X and 0), they take turns
+     ☐ Rules
+       ☐ X first
+       ☐ can't place token if filled
+       ☐ wind if 3 in a row
+       ☐ tie if all is filled with no 3 in a row
+     ☐ Define the entities and theirr relationship
+     ☐ flow of the game
+   ☐ Heavy weight game engines
+     ☐ What can it do? is it easy, relatively?
+     ☐ are there tools to help use the engine?
+     ☐ are the tools to see what is the engine doing?
+     ☐ components of
+       ☐ input / control
+       ☐ ai / npc
+       ☐ graphics
+       ☐ sound
+       ☐ physics
+       ☐ network
+       ☐ scene
+       ☐ scripts
+ ☐ Rules, Movement and interaction  
+   ☐ Adding feature one by one
+     ☐ Select the features to be added, prioritize
+     ☐ Code 
+     ☐ Test
+   ☐ enforcing rules of the game
+     ☐ where the rules should be
+     ☐ architecture to represent the rules where it is centralized and controlled
+     ☐ enforcing the rules is applicable during update stage
+     ☐ avoid work that we don't need to do
+     ☐ rules can be hard coded or data driven
+     ☐ lag has impact on gameplay, so make the progress seamless one client game can predict the actions of other players, this allows the user to feel that the game is not lagging
+   ☐ Game balance, fairness and player bias
+     ☐ check therules of the game are balanced in the game
+     ☐ identify relationship by using diagra and table, using the table will show the balanced reflection 
+     ☐ fairness, whre the players don't have the same abilities or options
+     ☐ an unbalanced game can be fair
+     ☐ simulate games to ge the fainess and bias
+     ☐ player bias might not effect the game where a single option or certain set of choices have better opportunity for wins
+   ☐ Physics of games
+     ☐ mass, gravity, wind factor, 
+     ☐ velocity and force applied to objects
+     ☐ rigid model, to bounce off or react to proximity or contact
+     ☐ important to sample small chunks of data so that nothing is missed during a progress
+   ☐ avoiding work   
+     ☐ checking of hits even after the object is 'dead'
+     ☐ identify additional work early in the game, then it's easier to implement
+     ☐ segmentize or group or range elements so that comparisons are done only when needed
+ ☐ Sprites and game objects
+   ☐ Bitmap images and vector graphics
+     ☐ bitmap made up of pixels
+     ☐ vector based does not get pixellated
+   ☐ images are used by sprites
+   ☐ A sprite is an image info thathas ability 2 draw itself somewhere and adding 2 that useful or common game things that we need (2D arcade style game information.).
+   ☐ sprites can represent any object on the game world
+   ☐ sprites can have multiple images where animation can be achieved
+ ☐ Events & Messages
+   ☐ messages being exchanges between one game object o another, example two characters talking to each other
+   ☐ each characters can have their message communicated directly but this would an overhead
+   ☐ a blackboard system - distribute messages in a centralized location and the relevant character picks it up
+   ☐ dispatch model  
+   ☐ 1 to 1 messaging
+   ☐ 1 to many messaging
+   ☐ self messaging
+   ☐ delayed messaging
+ ☐ Working concurrently
+   ☐ the input , update and render process in parallel
+   ☐ each of this process can be by itself in their own thread
+     ☐ done by having a loader, update and render
+     ☐ these thread will need to communicate with each other
+ ☐ Assessment
+   ☐ The purpose of an iterative development process is to have a controlled process and achieve high-quality adaptive improvement.
+   ☐ To provide flexibility for game developers and designers, game rules should be loaded as data by a game engine.
+   ☐ One player is not allowed to choose all the options describes a balanced game that is unfair for a player 
+   ☐ Forces added together best describes how multiple forces are used in force-based character movement
+   ☐ From many game objects to a single game object (many-to-1) is NOT a message type suitable for games
+☐ AI for games
+☐ Adding Life
+  ☐ Objective is to be fun where the ai behaviour is fun to play with / against. not too dumb and not to smart
+  ☐ AI needs to be rational where the player can think that it makes sense on what the ai is doing
+  ☐ The AI knows how to do it, or knows how to find a way to do it
+  ☐ Player perception
+    ☐ watchable behaviour
+    ☐ has an obvious purpose
+    ☐ keep it simple
+    ☐ approximate the ai ability
+    ☐ test the AI
+    ☐ use existing solution
+  ☐ Agent AI Models
+    ☐ agents exist within a game loop within the update stage
+      ☐ Sense
+        ☐ getting inputs
+      ☐ Think
+        ☐ plan and react, having memory of previous events
+      ☐ Act
+        ☐ action from the decision from 'Think'
+    ☐ The game world / rule will than validate the act to proceed or reject    
+  ☐ State machines and decision trees
+    ☐ agent model reactions
+    ☐ state machine models
+      ☐ 2 state of an object / character.
+        ☐ Moving, character to move based on condition (certain direction or detection)
+        ☐ turn, to turn based on condition (certain direction or detection)
+        ☐ Attack, attack another object based on data input
+        ☐ Death
+    ☐ decision three
+      ☐ the flow of state change based on the conditions
+    ☐ state machines can be nested
+    ☐ state machines can be stacked
+  ☐ Goal oriented behaviour
+    ☐ agents can have goals and their states and state change depends on the goals
+    ☐ Agent to choose an action that will step through to achieve a goal
+    ☐ outcome evaluation done to choose the right action
+    ☐ action can be done to achieve a long term goal
+    ☐ Steering
+      ☐ This is under the "Think" section. has two elements, Gaol & Steer
+      ☐ Steering towards goal
+        ☐ Drift mode by default
+        ☐ Seek target (directing go towards a target)
+        ☐ Flee, move away from target
+        ☐ Arive, similar like seek but this approaches the proximity, slows down
+        ☐ Pursue, predicting the target movement and act accordingly
+        ☐ Flee follow, total opposite of pursue
+        ☐ Formation steering
+    ☐ Deciding where to go
+      ☐ Force based steering model
+        ☐ Wandering 
+          ☐ Projected steering
+            ☐ there is a projection circle attached in front of the agent
+            ☐ there will be a line of point "steer line" from the ship that goes towards the projection circle where the agent will move towards
+            ☐ this point can / will be randomly updated, which causes the agent to move smoothly in random directions
+            ☐ as the projection circle changes in size or distance the behaviour of the agent changes as well.
+        ☐ Wall feeler approach
+            ☐ feelers (lines projected out from the agent) when overlap with the wall , indicates force required to steer away
+            ☐ the the steer line
+        ☐ Detection box, manouver away or avoid collision
+            ☐ a region is defined in front of the agent that when approaches the avoidable object will allow the agent to slow down and steer away
+        ☐ Combination of these approaches can be used to create game scenarios
+      ☐ Group Steering behaviour
+        ☐ each agent have their neighbourhood
+        ☐ 
+        ☐ Sepertion
+          ☐ move away or accordingly based on the detection of other nearby agents
+        ☐ Alignment
+          ☐ change angle and direction to align with other agents
+        ☐ Cohesion
+          ☐ agent checks neighbourhood, the agent tries to stay in the middle of the group
+      ☐ Getting from A to B
+        ☐ Path planning, getting agents to go from point A to point B
+        ☐ Dijkstra's algorithm
+          ☐ floads the sourounding around the agent till it finds the point b, then calculates the path to point b
+          ☐ can also flood out from point a and b then the meeting area used to calculate the path
+        ☐ A* algorithm
+        ☐ Floods towards the point B
+        ☐ obstacles are also handled where the path is calculated around the obstacles
+      ☐ Putting it together
+        ☐ 
+      ☐ Assesment
+        ☐ Simple finite state machine - Each node is a state, and the current state changes if a trigger condition leading out is true.
+        ☐ Goal oriented action planning - Search the tree of possible action plans, to a limited depth, and find an action that results in the minimum discontentment 
+        ☐ Evade steers away from the targets predicted position, while pursue steers toward it
+        ☐ In the simulation of the hunter and the prey agents, prey are able to identify good hiding location behind objects. Two hiding spots on an object for preys if there were two hunter agents in the simulation would be appropriate
+        ☐ Cohesion force - An agent will adjust its heading to be more in the middle of the neighbourhood

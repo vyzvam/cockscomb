@@ -1,0 +1,36 @@
+Outside-In Development with Cucumber (https://vimeo.com/6448834):
+ ☐ rails cucumber-intro : creates a rail projet
+ ☐ ./script/generate cucumber : creates cucumber related files
+ ☐ ./script/generate rspec : generates rspec unit test files
+ ☐ rm -rf test : removes the default test folder
+ ☐ rake db:schema:dump
+ ☐ open your editor on the project
+ ☐ create a feature file "manage_users.feature"
+ ☐ create content for the feature file
+   Feature: Manage users
+     In order to understand my user base better
+     As a administrator
+     I want to view a list of users
+
+     Scenario:  User List
+       Given I have users named Geoarge , Mary
+       When I go to the list of users
+       Then I should see "George"
+       And I should see "Mary"
+ ☐ cucumber featuers/manage_users.feature : runs the file and suggests what to do next
+ ☐ copy the suggested step, create user_steps.rb in the step_definitions folder and paste 
+
+   Given /^I have users named (.*)$/ do |names|
+     names.split(',').each do |name|
+       User.create(:name => name)
+     end
+   end
+
+ ☐ ./scripts/generate rspec_model user name:string
+ ☐ rake db:migrate
+ ☐ rake db:test:clone 
+ ☐ open user_spec.rb 
+ ☐ 
+ ☐ rake spec  (runs all the test)
+ ☐ spec spec/models/user_spec.rb (run single file)
+ ☐ 

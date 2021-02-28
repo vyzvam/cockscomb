@@ -1,0 +1,17 @@
+WCF Guide:
+ ☐ Create a WCF sevice library
+   ☐ Create an Interface
+     ☐ reference a System.ServiceModel
+     ☐ attach a service contract on top of the interface
+     ☐ create a method signature with a OperationContract
+   ☐ Implement the interface and its' methods
+ ☐ Create a WCF console host application
+   ☐ reference system.servicemodel
+   ☐ reference the wcf library
+   ☐ use the serviceHost class to implement the library created earlier
+   ☐ addServiceEndPoint to the host, use netTcpBinding
+ ☐ Create a WFC console client application
+   ☐ reference the system.servicemodel
+   ☐ createa proxy object implemented using a shortcut-created interface
+   ☐ bind it 
+   ☐ and send a mesage to the serviceHost

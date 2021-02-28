@@ -1,0 +1,53 @@
+Azure ARM Templates:
+ ☐
+
+
+Deploying Websites:
+   ☐
+
+
+Getting Started with MS Azure:
+ ☐ Resource Groups
+ ☐ Tags
+ ☐ Virtual Network
+   ☐ Resource manager deployment model
+   ☐ address space : 192.168.0.0/16
+   ☐ subnet : 192.168.1.0/24
+   ☐ subnet : 192.168.2.0/24
+ ☐ VM
+   ☐ WS2012 R2 DC
+   ☐ subnet, public ip, network security group
+ ☐ Azure Powershell
+   ☐ Get PS Version: $PSVersionTable.PSVersion
+   ☐ Setting up
+     ☐ Issue a Get-Module -Name PowerShellGet -ListAvailable | Select-Object -Property Name,Version,Path
+     ☐ Install-Module PowerShellGet -Force
+     ☐ Install-Module -Name AzureRM -AllowClobber
+     ☐ Issue a Get-Module -Name AzureRM -ListAvailable | Select-Object -Property Name,Version,Path
+     ☐ Update-Module AzureRM (update to latest version, if required)
+     ☐ Import-Module -Name AzureRM
+   ☐ ConnectAzure and / or change subscription
+     ☐ Connect-AzureRmAccount
+     ☐ Get-AzureRmSubscription
+     ☐ Set-AzureRmContext -SubscriptionName "RD-APAC_MY-MC_SAAS"
+     ☐ in case to remove resource group: Remove-AzureRmResourceGroup -Name ResourceToDelete
+   ☐ Deployment
+     ☐ Deploying Network Security Group (NSG)
+       ☐ $nsgRuleRdp = New-AzureRmNetworkSecurityRuleConfig -Name SubaNsgRuleRdp -Protocol Tcp -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange * -Access Allow
+       ☐ $nsg = New-AzureRmNetworkSecurityGroup -Name SubaPsNSG -ResourceGroupName SubaPsRG -Location SoutheastAsia -SecurityRules $nsgRuleRdp
+     ☐ Deploying Multiple resources
+       ☐ Resource Group
+         ☐ New-AzureRmResourceGroup -Name SubaNewResourceGroup -Location SoutheastAsia
+       ☐ Virtual Network
+         ☐ $subnetCfg = New-AzureRmVirtualNetworkSubnetConfig -Name SubaNewSubnet -AddressPrefix 192.168.1.0/24
+         ☐ $vnet = New-AzureRmVirtualNetwork -Name SubaNewVNet -ResourceGroupName SubaNewResourceGroup -Location SoutheastAsia -AddressPrefix 192.168.0.0/16 -Subnet $subnetCfg
+       ☐ Public IP
+         ☐ $pip = New-AzureRmPublicIpAddress -ResourceGroupName SubaNewResourceGroup -Location SoutheastAsia -Name "subapublicdns$(Get-Random)"
+         ☐ AllocationMethod : Dynamic
+       ☐ Network Interface
+         ☐ $nic = New-AzureRmNetworkInterface -Name SubaNic -ResourceGroupName SubaNewResourceGroup -Location SoutheastAsia -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId = $pip.id -NetworkSecurityGroupId $nsg.Id
+       ☐ VM
+         ☐ $cred = Get-Credential
+         ☐ $vmCfg = New-AzureRmVMConfig -VMName SubaVM -VMSize Standard_B1s | Set-AzureRmVMOperatingSystem -Windows -ComputerName SubaVM -Credential $cred | Set-AzureVMSourceImage -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2016-Datacenter -Version Latest | Add-AzureRmVMNetworkInterface -Id $nic.Id
+         ☐ New-AzureRmVM - ResourceGroupName SubaNewResourceGroup -Location SoutheastAsia -VM $vmCfg
+

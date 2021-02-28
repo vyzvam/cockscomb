@@ -1,0 +1,20 @@
+Udemy: AWSServerless APIs & Apps application:
+ ☐ IAM Basics, Users, Groups, Roles, Policies
+ ☐ Amazon API Gateway
+   ☐ Create Api
+   ☐ Create resource and method
+   ☐ supply with dummy data
+   ☐ deploy to dev (staging)
+   ☐ test dev
+ ☐ API gateway costing
+   ☐ API calls: charged based on number of requests / calls
+   ☐ Data transfer costs: based on the response data size
+   ☐ Chaching: charged hourly based on the chache memory size 
+ ☐ Lambda 
+   ☐ can be used / triggered via cloudwatch (scheduling), AWS Services (S3) event & Api gateway
+   ☐ Pricing
+     ☐ Free-tier : 1M free requests / month & and 400,000 GB-seconds of compute time per month.
+     ☐ Free First 1 million requests / month
+     ☐ $0.20 per 1 million requests thereafter ($0.0000002 per request)
+   ☐ Use codepen.io to test request/response
+   ☐ 

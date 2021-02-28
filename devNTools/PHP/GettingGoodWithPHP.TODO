@@ -1,0 +1,17 @@
+PHP:
+ ☐ String Interpolation (using a variable inside a sring with double quote)
+ ☐ Comparison operators
+   ☐ "==" compares the value
+   ☐ "===" compares the value and the data type
+ ☐ Use continue if you wish to continue with the next set in a loop without continuing with the current code
+ ☐ date_parse (can be used to put date values in an associated array)
+ ☐ 
+
+
+--- ✄ -----------------------
+PSR-0/1/2/3:
+ ☐ PSR0: Autoloading
+ ☐ PSR1: Basic Coding Standard
+ ☐ PSR2: Coding Style Guide
+ ☐ PSR3: Logger Interface
+

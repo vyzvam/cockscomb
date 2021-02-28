@@ -1,0 +1,32 @@
+Javascript Tutorial:
+ ☐ The browser is a hierarchy of object where the window is the parent object
+    window is an object, any global variables created are attached to the object window.
+    alert() & parseInt(), for example are window's functions.
+ ☐ keyword var
+    variables / properties must be created with the keyword var
+ ☐ Functions
+   ☐ can be declared or expressed
+   ☐ function expresssion is stored as a variable
+   ☐ parameters within the function can be accessed by the 'arguments' variable
+      even if the function does not require parameter within the paratheses.
+   ☐ We can access the function recursively using the 'arguments.callee' keyword method
+   ☐ Functions can be assigned to another function expression
+   ☐ self-invoking functions can be stored in a variable to be used later in our code
+   ☐ 
+ ☐ variables and methods are created with camelCase, Objects are created with PascalCase.
+ ☐ Objects can be created as object literals
+ ☐ JS arrays are flexible, it can contains multiple data types
+   ☐ concat can be used to stack up multiple arrays into single array variabl
+   ☐ join can be used to join all the arrays into one string, this can be done with filters as well
+ ☐ inequality (!=), equality (==) , identity (===), non-identity(!==) operators
+ ☐ Use a self-invoked anonymous function to protect from being exposed to globally codes. 
+ ☐ document object model (DOM) is a set of objects  underneath the window object.
+ ☐ setTimeout is a function to delay a process, it is also a variable that can be cleared using a clearTimeout()
+ ☐ setInterval can be used to run animations or repeated process then clear it using clearInterval()
+ ☐ Use math() and date() object to do relevant operations
+ ☐ 
+
+--- ✄ -----------------------
+
+HTML & CSS Tutorial:
+ ☐ There is also a dl tag for definition list dl>dt+dd

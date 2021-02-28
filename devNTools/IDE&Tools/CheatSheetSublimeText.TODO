@@ -1,0 +1,105 @@
+Sublime Text 2 Tips & Tricks:
+☐ Customizing - Modification in user and not default (Ctrl+Shft+P -> Preferences: Settings - User)
+☐ Multi-Cursor
+  ☐ Ctrl + Click
+  ☐ Ctrl+D - Sequentially multicursor identical texts
+  ☐ Alt+F3 - multicursor all identical texts
+  ☐ Ctrl+Shft+L - Multicursor on selected lines
+☐ Joining Lines is powerful (select lines, Ctrl+J)
+☐ Wrapping text with tag (Alt+Shift+W)
+☐ Quick file reference (command pallete + 'copy')
+☐ Collapser
+  ☐ Ctrl + k, Ctrl + j (unfold all)
+  ☐ Ctrl + k, num m (fold level based on number)
+☐ The Awesome Command Pallete
+  ☐ Ctrl + Shft + P -To quick access sublime's features
+  ☐ Ctrl + P - To quick access files
+  ☐ Ctrl + R - '@' To quick access funtions in file (can be combined with Ctrl+P)
+  ☐ Ctrl + G - ':' To jumpt to a line in file
+  ☐ Ctrl + M - go to matching bracket
+☐ Master them split windows
+  ☐ Alt+Shft+[1,2,3,4,5] - Access the split windows of your choice
+  ☐ Ctrl+Shft[1,2,3,4,5] - Move the active file / tab to the group designated by the shortcut key
+  ☐ Ctrl+[1,2,3,4,5] - Move to a specific screen
+  ☐ Alt+[1,2,3,4 -> n] - Activate a specific tab
+  ☐ active screen buffer - Buffering space between screens
+    ☐ modify the keymapping to user key mapping
+  ☐ Replacing empty lines
+    ☐ Ctrl + H on PC,
+    Make sure you have selected 'regular expression' by pressing:
+    Alt + R on PC or
+    Command + Alt + R or
+    Click .* in the Find box.
+    Find what: ^\n
+☐ Sorting & Duplicate removal
+  ☐ F9 (Sort Lines)
+  ☐ Permute Lines (Edit menu)
+☐ Custom Builds Baby
+  ☐ Setup the build system (tools->build systems)
+  ☐ Enable them (tools->bulids)
+  ☐ then build the script (Ctrl+B)
+☐ Builtin features
+  ☐ spellcheck, press f6
+☐ Project Features
+  ☐ Specify what folders to see (filter) by editing the <projectname>.sublime-project (folders -> path(s))
+  ☐ Specify excludes patterns as well withing the path to hide files / folders that you don't work on
+☐ Snippets
+   ☐ Creating
+   ☐ Usage
+   ☐ github:gist (requires Gist package)
+     ☐ create github account just for snippets
+     ☐ specify account parameters in the gist.sublime-settings
+     ☐ use the command pallete to access the features
+☐ Plugins: Must have
+  ☐ AdvanceNewFile
+  ☐ Alignment
+  ☐ Bracket Highlighter
+  ☐ Clipboard history
+  ☐ Color Picker
+  ☐ Compare Side-by-Side
+  ☐ DocBlockr
+  ☐ Emmet (Ctrl+Alt+Enter for Abbreviation pallete)
+  ☐ eslint
+  ☐ FindKeyConflicts
+  ☐ Google spell check
+  ☐ Git
+  ☐ GitGutter
+  ☐ Gist
+  ☐ HTTP Requester (shows result in a new tab of what values are parsed in a browser)
+  ☐ JavaScriptNext (syntax highlight)
+  ☐ jsHint (Alt+J)
+  ☐ jsFormat (Ctrl+Alt+F)
+  ☐ Laravel Blade Highlighter
+  ☐ Laravel 4 Artisan
+  ☐ LiveReload / PyV8 (also install the browser extension)
+  ☐ Markdown preview
+  ☐ MarkdownEditing
+  ☐ Nettuts+ Fetch (awesome way to get files / packages)
+  ☐ Package Control
+  ☐ Package Decontrol
+  ☐ PlainTasks
+  ☐ Pretty JSON
+  ☐ PYV8
+  ☐ Prefixr (Cross-browser automation)
+  ☐ PHPUnit Snippet
+  ☐ SideBarEnhancements
+  ☐ Snippet: Blade
+  ☐ Snippet: Laravel 4
+  ☐ Snippet: CoffeeScript
+  ☐ Snippets: Any required
+  ☐ SublimeGIT
+  ☐ SublimeLinter (might require node.js for javascript codes)
+  ☐ SublimeLint
+  ☐ SublimeXiki (Bash , Cmd line tool)
+  ☐ Status Bar File Size
+  ☐ Theme - itg.flat
+  ☐ Theme: Phoenix
+  ☐ Text Pastry
+  ☐ TrailingSpaces
+  ☐ Transcript
+  ☐ Trimmer
+  ☐ View in Browser
+  ☐ xml2json
+
+
+
