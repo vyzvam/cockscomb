@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: startrek-v1
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: startrek 
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: startrek 
+        version: v1
+    spec:
+      containers:
+      - image: ssubacr.azurecr.io/startrek:v1
+        imagePullPolicy: Always
+        name: hostname
+        resources: {}
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: startrek 
+  name: startrek
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 3000 
+  selector:
+    app: startrek
+  sessionAffinity: None
+  type: LoadBalancer
