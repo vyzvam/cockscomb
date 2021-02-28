@@ -1,9 +1,6 @@
-# App Service
+# Event Grid 
 
-ref: https://docs.microsoft.com/en-gb/cli/azure/appservice/plan?view=azure-cli-latest
-
-
-## Create an App service plan and a webapp
+## Create an Event Grid 
 ```c#
 # Create a appservice plan
 # '--hyper-v is only available for P1 and above
