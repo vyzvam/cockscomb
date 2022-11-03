@@ -1,0 +1,60 @@
+Lean Stuff
+
+Taichi Ono
+Toyota production system
+Genchi Gembutsu
+
+Case study : Toyoya Sienna 2004, by yuji yokoya:
+☐ primary marketing is north america, proposed road trip spanning all 50 US states 
+☐ rent the current model sienna, drive it and talk and observe real customers 
+☐ test his assumptions on what north americans wanted in a minivan 
+☐ The new Sienna requird "Kid appeal"
+☐ boosted new Sienna market share dramatically: 60% higher than in those in 2003 
+
+
+Case Study: Groupon, founder andrew mason:
+☐ When they started , 20 ppl bought 2 for 1 pizza at a restaurant on the 1st floor of the company's chicago offices
+☐ Groupon originally wasn't meant to be commerce at all, 
+☐ Intended for collective activism platform called "the point" to bring ppl together to solve problems they couldn't solve on their own 
+☐ end of 2008 the founders decided to try a minimum viable product, they took a wordpress blog and called it groupon 
+☐ everyday a new post, sold t-shirts on the 1st version eg "this t-shirt will come in the color red, size large"
+☐ if you want a different color or size, email that to us the actual coupon generator was a filemaker which then be emailed as a pdf 
+☐ come to a point they sold 500 sushi coupon a day which is all done manually
+ 
+
+Case study: Startup, Food on the Table, Emanuel Rosso:
+☐ Creates weekly meal plans & grocery lists based on the food you and your family enjoy
+☐ It hooks into your local grocary store to find the best deals on the ingredients
+☐ This is an eloborate serivce demanding technical expertise and effort
+☐ It began with a single customer where everything was done manually and personally by the CEO
+☐ Every other element of the business was based on this single customer
+☐ This is the Concierge MVP
+☐ This, in the eyes of lean startup considered monumental progress
+☐ as they learn more and more about the process and need of the customer, they identified what was required to make their product a 
+
+Case study: ardwark: matt ventilla and damon horowitz:
+  ☐ A search site that designed to answer the kind of questions that befudles state of the art company such as google
+  ☐ instead of answering factual question it answers subjective questions
+  ☐ what is a good place to go out for a drink at my city after a ball game
+  ☐ subjective questions does not have single right answers
+  ☐ they took 6 months to figure out on what they should be building 
+  ☐ their early experiments many variation on the theme of having personal assitant that will answer personal questions 
+  ☐ all their early prototypes failed to meet the customers need 
+  ☐ the 6th prototype became the ardwark 
+    ☐ used humans as much as possible to replicate the process  
+    ☐ invited 100 to 200 friends to try the prototype and measured how many came back 
+    ☐ They refused to resolve / answer technological questions in the beginning as it does not serve in the MVP 
+    ☐ They used Wizard of Oz testing to fake it
+      ☐ customers believe they are interacting with the product
+      ☐ but infact, behind the scene there are human interaction taking place to answer their subjective questions
+    ☐ these answered the tough all important questions they asked to come up with a solution
+      ☐ if we can solve the tough technical problems behind this AI product will people use it?
+      ☐ will their use will lead to the creation of a product that has real value
+    ☐ it was this aproach / system allowed them to pivot over and over again
+    ☐ rejecting concepts that seems promising that may not have been viable
+    ☐ when they were ready for scaling they have ready made road map of what to build
+    ☐ Result: ardwark was acquired for a reported 50M by google
+
+☐ MVP allows entrepreneurs to start the process of learning as quickly as possible (BML feedback loop)
+
+

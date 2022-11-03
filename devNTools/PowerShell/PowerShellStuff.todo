@@ -1,0 +1,73 @@
+PowerShell stuff:
+ ☐ Copy Files From A Directory While Retaining The Folder Structure
+   ☐ Copy-Item SOURCE_FOLDER DESTINATION_FOLDER -filter: *.config -recurse
+ ☐ List Empty folders recursively
+   ☐ (Get-ChildItem tradingpost.config -recurse | Where-Object {$_.PSIsContainer -eq $True}) | Where-Object { $_.GetFiles().Count -eq 0 } | Select-Object FullName
+ ☐ Preview Remove Empty folders recursively
+   ☐ (Get-ChildItem tradingpost.config -recurse | Where-Object {$_.PSIsContainer -eq $True}) | Where-Object { $_.GetFiles().Count -eq 0 } | foreach ($_) { Remove-Item -Force -Recurse -Whatif $_.FullName }
+ ☐ Remove Empty folders recursively
+   ☐ (Get-ChildItem tradingpost.config -recurse | Where-Object {$_.PSIsContainer -eq $True}) | Where-Object { $_.GetFiles().Count -eq 0 } | foreach ($_) { Remove-Item -Force -Recurse $_.FullName }
+ ☐ Remove certain files recursively from a directory 
+   ☐ get-childitem tradingpost.config -include *.config -recurse | foreach ($_) {remove-item $_.fullname}
+ ☐ store result to a file 
+   ☐ | Out-File c:\pwouts\test.txt
+ ☐ Compare 2 directories
+   ☐ $col1 = Get-ChildItem -Recurse -Path tradingpost.com.au.staging
+   ☐ $col2 = Get-ChildItem -Recurse -Path tradingpost.config
+   ☐ Compare-Object -ReferenceObject $col1 -DifferenceObject $col2
+
+
+ ☐ Start-Transcript : saves workspace 
+ 
+
+ ☐ Update-Help : updates the local help repository
+ ☐ Get-Alias : list of cmdlet with alias
+ ☐ Get-Alias <alias> : describes the cmdlet for the alias
+ ☐ Get-Help <cmdlet>: example Get-Help Get-Service, shows a manual
+ ☐ Get-History: list of used cmdlets
+ ☐ 
+  ☐  Get-Help Get-Service - 
+ ☐ Get-Command : gets a list of available commands
+ ☐ Get-Command -Noun service: gets a list of available commands where the noun is 'service'
+ ☐ Get-Service: gets a list of services
+ ☐ Get-Process: gets a list of processes
+ ☐ Get-Process -Name sublime_text | Get-Member: list all the methods and properties related to the object. the pipe '|' takes the result from the first command and extends it.
+ ☐ Get-Process -Name sublime_text | Select-Object *
+
+
+Example #1: Listing the drive with size:
+ ☐ Get-PSDrive | ?{$_.Free -gt 1} | %{$Count = 0; Write-Host "";} { $_.Name + ": Used: " + "{0:N2}" -f ($_.Used/1gb) + " Free: " + "{0:N2}" -f ($_.free/1gb) + " Total: " + "{0:N2}" -f (($_.Used/1gb)+($_.Free/1gb)); $Count = $Count + $_.Free;}{Write-Host"";Write-Host "Total Free Space " ("{0:N2}" -f ($Count/1gb)) -backgroundcolor magenta}
+
+   ☐ Gets the current session drive list
+   ☐ "?" is alias for Where-Object, "$_" is the selector of the result from the command prior to "|" (current object in the pipe)
+   ☐ "-gt" is greater than
+   ☐ % is alis for ForEach-Object
+   ☐ Foreach can have 3 set command, each within a {}
+     ☐ 1st set is for the 1st iteration
+     ☐ 2nd set is for each iteration
+     ☐ 3rd set is for the last iteration
+   ☐ 1gb is reserved keyword
+   ☐ {0:N2} -f 100 : 0 represents the first parameter, N means "Number", the '2' after N represents the decimal places. -f means format
+ 
+
+Interacting in PS:
+ ☐ $input = Read-Host 'Enter your name' : this command reads the value typed by user and stores in $input variable
+ ☐ 
+
+General Info: 
+ ☐ PS cmdlets comes in the format of pascal-case <action>-<object>.
+ ☐ store profile, profile.ps1 in documents/WindowsPowerShell
+ ☐ 
+
+
+Functions, objects and scripts:
+ ☐ create a PS file "C:\subakit.ps1"
+ ☐ create functions in it
+ ☐ dot source the file ". .\subakit.ps1"
+ ☐ run "dir function:" to check if those functions are listed
+ ☐ the dot sources can be included in a profile script to ensure it is available in any PS sessions
+ ☐ Write-Output is used to return an object from a function
+ ☐ pipeline function : has 3 blocks, BEGIN{} PROCESS{} END{}
+ ☐ Functions can call other functions
+ ☐ Handling params from different variations (TODO)
+   ☐ 

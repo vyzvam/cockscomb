@@ -16,4 +16,17 @@ Development Workflow, Tools & Configs:
  ☐ Utilities & Management
  ☐ ConsoleZ (Cmd prompt, Git Bash, powershell)
    ☐ xml config
- 
+
+   
+Tasks for new programmers:
+ ☐ Register teamwork account
+ ☐ Learn teamwork
+ ☐ Learn GIT
+ ☐ Understand workflow
+   ☐ browser opend with 3 tabs (Overview, Task, Time) with teamwork logged in
+   ☐ Code IDE
+   ☐ Git Command window
+   ☐ Check git branch status
+   ☐ Commit codes with comments
+   ☐ pull / push accordingly
+   ☐ Comment in teamwork as you code  
