@@ -1,8 +1,11 @@
-# Automating Business Process 
+# Automating Business Process
+
 https://docs.microsoft.com/en-us/learn/modules/choose-azure-service-to-integrate-and-automate-business-processes/1-introduction
 
 ## Create Storage Account
+
 https://docs.microsoft.com/en-gb/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_create
+
 ```c#
 # create storage account
 az storage account create -g ssublearn -l eastus -n ssubsa --sku Standard_LRS
@@ -11,11 +14,13 @@ connectionString=$(az storage account show-connection-string --n ssubsa -g ssubl
 ```
 
 ## Create a function app
+
 ```c#
 az functionapp create -g ssublearn --consumption-plan-location eastus -n ssubFunc --os-type Linux --runtime dotnet --functions-version 3 --storage-account ssubsa
 ```
 
 ## Create a function project
+
 ```c#
 
 # Install Azure Functions Core Tools
@@ -42,6 +47,7 @@ get
 ```
 
 ## Create function to manage storage queues
+
 ```c#
 func new --template "Queue Trigger" --name "QueueTrigger"
 

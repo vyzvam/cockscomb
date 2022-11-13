@@ -1,13 +1,14 @@
 # Git workflow stuff
 
-
 ## Reference
-https://map.sitecore.net/Processes/Engineering/Development/Sitecore%20Code%20Quality%20Model/
+
+<https://map.sitecore.net/Processes/Engineering/Development/Sitecore%20Code%20Quality%20Model/>
 ​
-https://www.atlassian.com/git/tutorials/comparing-workflows
+<https://www.atlassian.com/git/tutorials/comparing-workflows>
 ​
 
 ## Start new feature
+
 1. Branch out from master to feature/XXXXX
 2. Develop on branch  feature/XXXXX
 3. Test branch feature/XXXXX
@@ -15,8 +16,7 @@ https://www.atlassian.com/git/tutorials/comparing-workflows
 5. PR review
 6. Merge
 7. Branch feature/XXXXX deleted
-https://sitecore.box.com/s/0vacsq4ivq6hf26z0q3pxlbvdcdagqpb
-
+<https://sitecore.box.com/s/0vacsq4ivq6hf26z0q3pxlbvdcdagqpb>
 
 ## Use case : develop a feature: provision azure function app
 

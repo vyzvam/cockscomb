@@ -3,6 +3,7 @@
 
 
 ## Create a storage account
+
 ```c#
 # create storage account
 az storage account create -g ssublearn -l eastus -n ssubsa --sku Standard_LRS
@@ -15,6 +16,7 @@ connectionString=$(az storage account show-connection-string --n ssubsa -g ssubl
 ```
 
 ## Create Event Grid
+
 ```c#
 az eventhubs namespace create -g ssublearn -n ssubnspace -l eastus --sku Standard --enable-auto-inflate --maximum-throughput-units 5
 
@@ -32,7 +34,9 @@ az eventhubs eventhub authorization-rule create -g ssublearn --namespace-name ss
 # Retrieve the connectionstring
 ListenConnectionString=$(az eventhubs eventhub authorization-rule keys list -g ssublearn --namespace-name ssubnspace --eventhub-name ssubhub --name HubListener --query '{connection:primaryConnectionString}' -o tsv)
 ```
+
 ## Create a .net project for sending messages
+
 ```c#
 # Create a console app
 mkdir EvenHubProducer
@@ -42,8 +46,9 @@ dotnet add package Azure.Messaging.EvenHubs
 dotnet add package Azure.Messaging.EvenHubs.Producer
 dotnet restore
 ```
-#Add code to Program.cs
+
 ```c#
+#Add code to Program.cs
 #add these codes in the Program class
 privant const string connectionString = "";
 privant const string eventHubName = "ssubhub";
@@ -65,6 +70,7 @@ static async Task Main() {
 ```
 
 ## Create a .net project for receiving messages
+
 ```c#
 # Create a console app
 # make sure you are not in the folder of the previous project
@@ -77,8 +83,9 @@ dotnet add package Azure.Messaging.EvenHubs.Processor
 dotnet add package Azure.Storage.Blobs
 dotnet restore
 ```
-#Add code to Program.cs
+
 ```c#
+#Add code to Program.cs
 #add these codes in the Program class
 private const string connectionString = "<connectionString";
 private const string eventHubName = "ssubhub";
@@ -116,6 +123,3 @@ static async Task ProcessErrorEventHandler(ProcessErrorEventArgs eventArgs) {
     return Task.CompletedTask;
 }
 ```
-
-
-

@@ -1,15 +1,16 @@
 # Terraform and Azure
-https://gmusumeci.medium.com/getting-started-with-terraform-and-microsoft-azure-a2fcb690eb67
 
+<https://gmusumeci.medium.com/getting-started-with-terraform-and-microsoft-azure-a2fcb690eb67>
 
 ## Prerequisites
+
 * Terraform installed
 * VS Code
 * VS Code Extension: Azure Terraform
 * Logged in to Azure
 
-
 ## Create service principal
+
 ```c#
 az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/a58f4f07-6319-4d8a-b908-1e047d2fd178" --name "ssub-terraform"
 
@@ -26,6 +27,7 @@ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/a58f4f07-
 ## Create terraform variables
 
 Create a variables file `variables.tf` containing
+
 ```c#
 #Azure Subscription Id
 variable "azure-subscription-id" {
@@ -52,6 +54,7 @@ variable "azure-tenant-id" {
 }
 
 ```
+
 ## Create `terraform.tfvars`
 
 ```c#
