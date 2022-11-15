@@ -1,10 +1,10 @@
 # Automating Business Process
 
-https://docs.microsoft.com/en-us/learn/modules/choose-azure-service-to-integrate-and-automate-business-processes/1-introduction
+<https://docs.microsoft.com/en-us/learn/modules/choose-azure-service-to-integrate-and-automate-business-processes/1-introduction>
 
 ## Create Storage Account
 
-https://docs.microsoft.com/en-gb/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_create
+<https://docs.microsoft.com/en-gb/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_create>
 
 ```c#
 # create storage account
@@ -54,4 +54,3 @@ func new --template "Queue Trigger" --name "QueueTrigger"
 func extensions install --package Azure.Storage.Queues --version 12.0.0
 
 ```
-

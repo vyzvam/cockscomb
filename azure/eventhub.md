@@ -1,7 +1,5 @@
 # Event Hub
 
-
-
 ## Create a storage account
 
 ```c#
