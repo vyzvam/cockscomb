@@ -1,4 +1,5 @@
 # Analyzing your applications with Application Insights (AI):
+
 https://www.youtube.com/watch?v=pqZF8LjBh68
 
 
