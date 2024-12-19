@@ -47,15 +47,11 @@ Create a virtual network:-
 Once done, the peering status would be 'connected'. Now you can access the VM from the other VM via it's private IP
 As an example you can access the IIS web page by specifying private ip address.
 
-
-
-
 ### Site-to-Site VPN connections
 
 This is for connection between a VM in a VNet and an onprem data center.
 It is done by having a VPN connection tunnel (encrypted using IPsec IKE S2S).
 This is done by setting up a VPN gateway.
-
 
 ### Service endpoints
 
@@ -71,7 +67,7 @@ VNet private address spaces can overlap. You can't use overlapping spaces to uni
 
 Today, any routes in your virtual network that force internet traffic to your on-premises and/or virtual appliances also force Azure service traffic to take the same route as the internet traffic. Service endpoints provide optimal routing for Azure traffic.
 
-##### Endpoints always take service traffic directly from your virtual network to the service on the Microsoft Azure backbone network.
+##### Endpoints always take service traffic directly from your virtual network to the service on the Microsoft Azure backbone network
 
 Keeping traffic on the Azure backbone network allows you to continue auditing and monitoring outbound Internet traffic from your virtual networks, through forced-tunneling, without impacting service traffic. For more information about user-defined routes and forced-tunneling, see Azure virtual network traffic routing.
 

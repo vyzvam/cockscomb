@@ -1,7 +1,7 @@
 # Docker knowledge share
 
-
 ## Running and checking a dotnet webapp
+
 Run a container, image from docker hu.2 Operations on the container. Accessing the container
 
 ```c#
